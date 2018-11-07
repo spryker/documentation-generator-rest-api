@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerTest\Zed\DocumentationGeneratorRestApi\Business\Stub;
+namespace SprykerTest\Zed\RestApiDocumentationGenerator\Business\Stub;
 
 use SprykerTest\Shared\Kernel\Transfer\Fixtures\AbstractTransfer;
 
@@ -44,12 +44,14 @@ class RestTestAttributesTransfer extends AbstractTransfer
             'name_underscore' => 'attribute1',
             'is_collection' => false,
             'is_transfer' => false,
+            'rest_request_parameter' => 'no',
         ],
         self::ATTRIBUTE2 => [
             'type' => 'string',
             'name_underscore' => 'attribute2',
             'is_collection' => false,
             'is_transfer' => false,
+            'rest_request_parameter' => 'required',
         ],
     ];
 
@@ -64,7 +66,7 @@ class RestTestAttributesTransfer extends AbstractTransfer
     /**
      * @param string $attribute1
      *
-     * @return \SprykerTest\Zed\DocumentationGeneratorRestApi\Business\Stub\RestTestAttributesTransfer
+     * @return \SprykerTest\Zed\RestApiDocumentationGenerator\Business\Stub\RestTestAttributesTransfer
      */
     public function setAttribute1(string $attribute1): self
     {
@@ -85,7 +87,7 @@ class RestTestAttributesTransfer extends AbstractTransfer
     /**
      * @param string $attribute2
      *
-     * @return \SprykerTest\Zed\DocumentationGeneratorRestApi\Business\Stub\RestTestAttributesTransfer
+     * @return \SprykerTest\Zed\RestApiDocumentationGenerator\Business\Stub\RestTestAttributesTransfer
      */
     public function setAttribute2(string $attribute2): self
     {

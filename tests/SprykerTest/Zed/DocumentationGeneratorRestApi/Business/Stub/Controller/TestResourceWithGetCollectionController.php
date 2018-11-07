@@ -7,11 +7,11 @@
 
 namespace SprykerTest\Zed\RestApiDocumentationGenerator\Business\Stub\Controller;
 
-class TestResourceController
+class TestResourceWithGetCollectionController
 {
     /**
      * @Glue({
-     *     "getResource": {
+     *     "getCollection": {
      *          "summary": [
      *              "Summary example"
      *          ],
@@ -28,23 +28,6 @@ class TestResourceController
      * @return void
      */
     public function getAction()
-    {
-    }
-
-    /**
-     * @Glue({
-     *     "post": {
-     *          "responseClass": "Generated\\Shared\\Transfer\\RestTokenResponseAttributesTransfer",
-     *          "responses": {
-     *              "400": "Bad Request",
-     *              "500": "Server Error"
-     *          }
-     *     }
-     * })
-     *
-     * @return void
-     */
-    public function postAction()
     {
     }
 }

@@ -7,19 +7,18 @@
 
 namespace SprykerTest\Zed\RestApiDocumentationGenerator\Business\Stub\Controller;
 
-class TestResourceController
+class TestResourceWithAllMethodsController
 {
     /**
      * @Glue({
      *     "getResource": {
      *          "summary": [
-     *              "Summary example"
+     *              "getResource summary"
      *          ],
      *          "headers": [
      *              "Accept-Language"
      *          ],
      *          "responses": {
-     *              "400": "Bad Request",
      *              "404": "Item not found"
      *          }
      *     }
@@ -34,7 +33,9 @@ class TestResourceController
     /**
      * @Glue({
      *     "post": {
-     *          "responseClass": "Generated\\Shared\\Transfer\\RestTokenResponseAttributesTransfer",
+     *          "summary": [
+     *              "post summary"
+     *          ],
      *          "responses": {
      *              "400": "Bad Request",
      *              "500": "Server Error"
@@ -45,6 +46,44 @@ class TestResourceController
      * @return void
      */
     public function postAction()
+    {
+    }
+
+    /**
+     * @Glue({
+     *     "patch": {
+     *          "summary": [
+     *              "patch summary"
+     *          ],
+     *          "responses": {
+     *              "404": "Item not found",
+     *              "500": "Server Error"
+     *          }
+     *     }
+     * })
+     *
+     * @return void
+     */
+    public function patchAction()
+    {
+    }
+
+    /**
+     * @Glue({
+     *     "delete": {
+     *          "summary": [
+     *              "patch summary"
+     *          ],
+     *          "responses": {
+     *              "404": "Item not found",
+     *              "500": "Server Error"
+     *          }
+     *     }
+     * })
+     *
+     * @return void
+     */
+    public function deleteAction()
     {
     }
 }

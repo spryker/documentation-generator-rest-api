@@ -5,24 +5,22 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerTest\Zed\DocumentationGeneratorRestApi\Business\Analyzer;
+namespace SprykerTest\Zed\RestApiDocumentationGenerator\Business\Analyzer;
 
 use Codeception\Test\Unit;
+use Generated\Shared\Transfer\RestTokenResponseAttributesTransfer;
 use PHPUnit\Framework\MockObject\MockObject;
-use SplFileInfo;
-use Spryker\Zed\DocumentationGeneratorRestApi\Business\Analyzer\GlueAnnotationAnalyzer;
-use Spryker\Zed\DocumentationGeneratorRestApi\Business\Analyzer\GlueAnnotationAnalyzerInterface;
-use Spryker\Zed\DocumentationGeneratorRestApi\Business\Finder\GlueControllerFinder;
-use Spryker\Zed\DocumentationGeneratorRestApi\Dependency\Service\DocumentationGeneratorRestApiToUtilEncodingServiceBridge;
-use Spryker\Zed\DocumentationGeneratorRestApi\Dependency\Service\DocumentationGeneratorRestApiToUtilEncodingServiceInterface;
-use SprykerTest\Zed\DocumentationGeneratorRestApi\Business\Stub\Plugin\TestResourceRoutePlugin;
-use SprykerTest\Zed\DocumentationGeneratorRestApi\Business\Stub\RestTestAlternativeAttributesTransfer;
+use Spryker\Zed\RestApiDocumentationGenerator\Business\Analyzer\GlueAnnotationAnalyzer;
+use Spryker\Zed\RestApiDocumentationGenerator\Business\Exception\InvalidAnnotationFormatException;
+use Spryker\Zed\RestApiDocumentationGenerator\Dependency\Service\RestApiDocumentationGeneratorToUtilEncodingServiceInterface;
+use SprykerTest\Zed\RestApiDocumentationGenerator\Business\RestApiDocumentationGeneratorTestFactory;
+use SprykerTest\Zed\RestApiDocumentationGenerator\Business\Stub\Plugin\TestResourceRoutePlugin;
 
 /**
  * Auto-generated group annotations
  * @group SprykerTest
  * @group Zed
- * @group DocumentationGeneratorRestApi
+ * @group RestApiDocumentationGenerator
  * @group Business
  * @group Analyzer
  * @group GlueAnnotationAnalyzerTest
@@ -30,15 +28,14 @@ use SprykerTest\Zed\DocumentationGeneratorRestApi\Business\Stub\RestTestAlternat
  */
 class GlueAnnotationAnalyzerTest extends Unit
 {
-    /**
-     * @var \SprykerTest\Zed\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiFacadeTester
-     */
-    protected $tester;
-
-    protected const CONTROLLER_SOURCE_DIRECTORY = __DIR__ . '/../Stub/Controller/';
+    protected const CONTROLLER_SOURCE_DIRECTORY = APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/RestApiDocumentationGenerator/tests/SprykerTest/Zed/RestApiDocumentationGenerator/Business/Stub/Controller/';
     protected const CONTROLLER_FILE_NAME = 'TestResourceController.php';
+    protected const CONTROLLER_WITH_INVALID_ANNOTATIONS_FILE_NAME = 'TestResourceWithInvalidAnnotationsController.php';
+    protected const CONTROLLER_WITHOUT_ANNOTATIONS = 'TestResourceWithoutAnnotationsController.php';
+    protected const CONTROLLER_WITH_EMPTY_ANNOTATIONS = 'TestResourceWithEmptyAnnotationsController.php';
 
     protected const SUMMARY = 'Summary example';
+    protected const RESPONSE_CLASS = RestTokenResponseAttributesTransfer::class;
     protected const HEADER_ACCEPT_LANGUAGE = 'Accept-Language';
     protected const KEY_RESPONSE_BAD_REQUEST = 400;
     protected const KEY_RESPONSE_NOT_FOUND = 404;
@@ -48,12 +45,30 @@ class GlueAnnotationAnalyzerTest extends Unit
     protected const VALUE_RESPONSE_SERVER_ERROR = 'Server Error';
 
     /**
+     * @var \SprykerTest\Zed\RestApiDocumentationGenerator\Business\RestApiDocumentationGeneratorTestFactory
+     */
+    protected $testFactory;
+
+    /**
+     * @return void
+     */
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->testFactory = new RestApiDocumentationGeneratorTestFactory();
+    }
+
+    /**
      * @return void
      */
     public function testGetResourceParametersFromPluginWillReturnCorrectParameters(): void
     {
-        $glueAnnotationAnalyzer = $this->createGlueAnnotationAnalyzer();
-        $parameters = $glueAnnotationAnalyzer->getResourceParametersFromPlugin($this->createTestResourceRoutePlugin());
+        $glueAnnotationAnalyzer = new GlueAnnotationAnalyzer(
+            $this->getGlueControllerFinder(static::CONTROLLER_SOURCE_DIRECTORY . DIRECTORY_SEPARATOR . static::CONTROLLER_FILE_NAME),
+            $this->getUtilEncodingService()
+        );
+        $parameters = $glueAnnotationAnalyzer->getResourceParametersFromPlugin(new TestResourceRoutePlugin());
 
         $this->assertNotEmpty($parameters->getGetResource());
         $this->assertNotEmpty($parameters->getPost());
@@ -70,7 +85,7 @@ class GlueAnnotationAnalyzerTest extends Unit
             static::KEY_RESPONSE_NOT_FOUND => static::VALUE_RESPONSE_NOT_FOUND,
         ], $parameters->getGetResource()->getResponses());
         $this->assertNotEmpty($parameters->getPost()->getResponseClass());
-        $this->assertEquals(RestTestAlternativeAttributesTransfer::class, $parameters->getPost()->getResponseClass());
+        $this->assertEquals(static::RESPONSE_CLASS, $parameters->getPost()->getResponseClass());
         $this->assertArraySubset([
             static::KEY_RESPONSE_BAD_REQUEST => static::VALUE_RESPONSE_BAD_REQUEST,
             static::KEY_RESPONSE_SERVER_ERROR => static::VALUE_RESPONSE_SERVER_ERROR,
@@ -78,54 +93,74 @@ class GlueAnnotationAnalyzerTest extends Unit
     }
 
     /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Analyzer\GlueAnnotationAnalyzerInterface
+     * @return void
      */
-    protected function createGlueAnnotationAnalyzer(): GlueAnnotationAnalyzerInterface
+    public function testGetResourceParametersFromPluginWillThrowExceptionIfAnnotationsContainsInvalidJson(): void
     {
-        return new GlueAnnotationAnalyzer(
-            $this->getGlueControllerFinderMock(),
-            $this->createDocumentationGeneratorRestApiToUtilEncodingService()
+        $glueAnnotationAnalyzer = new GlueAnnotationAnalyzer(
+            $this->getGlueControllerFinder(static::CONTROLLER_SOURCE_DIRECTORY . DIRECTORY_SEPARATOR . static::CONTROLLER_WITH_INVALID_ANNOTATIONS_FILE_NAME),
+            $this->getUtilEncodingService()
         );
+
+        $this->expectException(InvalidAnnotationFormatException::class);
+        $glueAnnotationAnalyzer->getResourceParametersFromPlugin(new TestResourceRoutePlugin());
     }
 
     /**
-     * @return \PHPUnit\Framework\MockObject\MockObject|\Spryker\Zed\DocumentationGeneratorRestApi\Business\Finder\GlueControllerFinderInterface
+     * @return void
      */
-    protected function getGlueControllerFinderMock(): MockObject
+    public function testGetResourceParametersFromPluginWillReturnWithEmptyPropertiesIfAnnotationsIsNotFoundInController(): void
     {
-        $mock = $this->getMockBuilder(GlueControllerFinder::class)
-            ->setMethods(['getGlueControllerFilesFromPlugin'])
-            ->disableOriginalConstructor()
-            ->getMock();
-        $mock->method('getGlueControllerFilesFromPlugin')
-            ->willReturn([$this->createControllerSplFileInfo()]);
-
-        return $mock;
-    }
-
-    /**
-     * @return \SplFileInfo
-     */
-    protected function createControllerSplFileInfo(): SplFileInfo
-    {
-        return new SplFileInfo(static::CONTROLLER_SOURCE_DIRECTORY . DIRECTORY_SEPARATOR . static::CONTROLLER_FILE_NAME);
-    }
-
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Dependency\Service\DocumentationGeneratorRestApiToUtilEncodingServiceInterface
-     */
-    protected function createDocumentationGeneratorRestApiToUtilEncodingService(): DocumentationGeneratorRestApiToUtilEncodingServiceInterface
-    {
-        return new DocumentationGeneratorRestApiToUtilEncodingServiceBridge(
-            $this->tester->getLocator()->utilEncoding()->service()
+        $glueAnnotationAnalyzer = new GlueAnnotationAnalyzer(
+            $this->getGlueControllerFinder(static::CONTROLLER_SOURCE_DIRECTORY . DIRECTORY_SEPARATOR . static::CONTROLLER_WITHOUT_ANNOTATIONS),
+            $this->getUtilEncodingService()
         );
+
+        $parameters = $glueAnnotationAnalyzer->getResourceParametersFromPlugin(new TestResourceRoutePlugin());
+
+        $this->assertEmpty($parameters->getGetResource());
+        $this->assertEmpty($parameters->getPost());
+        $this->assertEmpty($parameters->getPatch());
+        $this->assertEmpty($parameters->getGetCollection());
+        $this->assertEmpty($parameters->getGetResourceById());
+        $this->assertEmpty($parameters->getDelete());
     }
 
     /**
-     * @return \SprykerTest\Zed\DocumentationGeneratorRestApi\Business\Stub\Plugin\TestResourceRoutePlugin
+     * @return void
      */
-    protected function createTestResourceRoutePlugin(): TestResourceRoutePlugin
+    public function testGetResourceParametersFromPluginWillReturnObjectWithEmptyPropertiesIfAnnotationsIsAnEmptyObject(): void
     {
-        return new TestResourceRoutePlugin();
+        $glueAnnotationAnalyzer = new GlueAnnotationAnalyzer(
+            $this->getGlueControllerFinder(static::CONTROLLER_SOURCE_DIRECTORY . DIRECTORY_SEPARATOR . static::CONTROLLER_WITH_EMPTY_ANNOTATIONS),
+            $this->getUtilEncodingService()
+        );
+
+        $parameters = $glueAnnotationAnalyzer->getResourceParametersFromPlugin(new TestResourceRoutePlugin());
+
+        $this->assertEmpty($parameters->getGetResource());
+        $this->assertEmpty($parameters->getPost());
+        $this->assertEmpty($parameters->getPatch());
+        $this->assertEmpty($parameters->getGetCollection());
+        $this->assertEmpty($parameters->getGetResourceById());
+        $this->assertEmpty($parameters->getDelete());
+    }
+
+    /**
+     * @param string $controller
+     *
+     * @return \PHPUnit\Framework\MockObject\MockObject|\Spryker\Zed\RestApiDocumentationGenerator\Business\Finder\GlueControllerFinderInterface
+     */
+    protected function getGlueControllerFinder(string $controller): MockObject
+    {
+        return $this->testFactory->createGlueControllerFinderMock($controller);
+    }
+
+    /**
+     * @return \Spryker\Zed\RestApiDocumentationGenerator\Dependency\Service\RestApiDocumentationGeneratorToUtilEncodingServiceInterface
+     */
+    protected function getUtilEncodingService(): RestApiDocumentationGeneratorToUtilEncodingServiceInterface
+    {
+        return $this->testFactory->createUtilEncodingService();
     }
 }
