@@ -250,6 +250,7 @@ class OpenApiSpecificationPathGenerator implements PathGeneratorInterface
         $pathSchemaDataTransfer = $this->getSuccessResponseSchema($pathMethodDataTransfer->getResponseSchemas());
 
         if ($pathSchemaDataTransfer) {
+            /** @phpstan-ignore notIdentical.alwaysTrue */
             if ($pathSchemaDataTransfer->getCode() !== Response::HTTP_NO_CONTENT) {
                 $pathSchemaDataTransfer->setSchemaReference($responseSchemaDataTransfer->getSchemaReference());
             }

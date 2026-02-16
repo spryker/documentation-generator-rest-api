@@ -12,5 +12,6 @@ parameters:
         - '#Call to static method singularize\(\) on an unknown class Doctrine\\Common\\Inflector\\Inflector.#'
         - '#Cannot access offset string on bool\|string.#'
         - '#Cannot assign offset string to string.#'
+        - '#PHPDoc tag @SuppressWarnings has invalid value#'
         -
             identifier: missingType.iterableValue

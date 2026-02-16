@@ -94,8 +94,11 @@ class GlueControllerFinder implements GlueControllerFinderInterface
         $controllerClass = $this->inflector->classify($plugin->getController()) . static::CONTROLLER_SUFFIX;
         $pluginClass = get_class($plugin);
 
-        /** @var int $moduleNamespacePosition */
         $moduleNamespacePosition = strpos($pluginClass, static::PATTERN_PLUGIN);
+        if ($moduleNamespacePosition === false) {
+            return '';
+        }
+
         $moduleNamespace = substr($pluginClass, 0, $moduleNamespacePosition);
 
         return sprintf(
