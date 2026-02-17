@@ -5,6 +5,8 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
+// phpcs:disable Spryker.Factory.OneNewPerMethod
+
 namespace SprykerTest\Zed\DocumentationGeneratorRestApi\Business;
 
 use Codeception\Test\Unit;
