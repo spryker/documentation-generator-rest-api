@@ -144,13 +144,7 @@ class PathMethodRenderer implements PathMethodRendererInterface
      */
     protected function getFormattedSummary(PathMethodDataTransfer $pathMethodDataTransfer): string
     {
-        $summary = $pathMethodDataTransfer->getSummary();
-
-        if (is_array($summary)) {
-            return implode(PHP_EOL, $summary);
-        }
-
-        return (string)$summary;
+        return implode(PHP_EOL, (array)$pathMethodDataTransfer->getSummary());
     }
 
     /**
