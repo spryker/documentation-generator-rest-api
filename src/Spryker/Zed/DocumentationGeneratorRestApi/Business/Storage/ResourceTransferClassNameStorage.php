@@ -14,22 +14,11 @@ class ResourceTransferClassNameStorage implements ResourceTransferClassNameStora
      */
     protected static $transferClassNames = [];
 
-    /**
-     * @param string $resourceType
-     * @param string $transferClassName
-     *
-     * @return void
-     */
     public function addResourceTransferClassName(string $resourceType, string $transferClassName): void
     {
         static::$transferClassNames[$resourceType] = $transferClassName;
     }
 
-    /**
-     * @param string $resourceType
-     *
-     * @return string|null
-     */
     public function getResourceTransferClassName(string $resourceType): ?string
     {
         return static::$transferClassNames[$resourceType] ?? null;

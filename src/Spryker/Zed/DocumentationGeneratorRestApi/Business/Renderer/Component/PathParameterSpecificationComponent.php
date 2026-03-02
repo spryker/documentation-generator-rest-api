@@ -36,19 +36,11 @@ class PathParameterSpecificationComponent implements PathParameterSpecificationC
      */
     protected $pathParameterComponentTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\PathParameterComponentTransfer $pathParameterComponentTransfer
-     *
-     * @return void
-     */
     public function setPathParameterComponentTransfer(PathParameterComponentTransfer $pathParameterComponentTransfer): void
     {
         $this->pathParameterComponentTransfer = $pathParameterComponentTransfer;
     }
 
-    /**
-     * @return array
-     */
     public function getSpecificationComponentData(): array
     {
         $result = [];
@@ -79,9 +71,6 @@ class PathParameterSpecificationComponent implements PathParameterSpecificationC
         return $result;
     }
 
-    /**
-     * @return bool
-     */
     protected function validatePathParameterComponentTransfer(): bool
     {
         if (!$this->pathParameterComponentTransfer) {

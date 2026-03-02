@@ -65,9 +65,6 @@ class RestTestAnnotationResourceRelationshipAttributesTransfer extends AbstractT
         ],
     ];
 
-    /**
-     * @return string|null
-     */
     public function getAttribute5(): ?string
     {
         return $this->attribute5;
@@ -86,9 +83,6 @@ class RestTestAnnotationResourceRelationshipAttributesTransfer extends AbstractT
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getAttribute6(): ?string
     {
         return $this->attribute6;

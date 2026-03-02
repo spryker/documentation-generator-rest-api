@@ -48,11 +48,6 @@ class GlueControllerFinder implements GlueControllerFinderInterface
      */
     protected $sourceDirectories;
 
-    /**
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Dependency\External\DocumentationGeneratorRestApiToFinderInterface $finder
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Dependency\External\DocumentationGeneratorRestApiToTextInflectorInterface $inflector
-     * @param array $sourceDirectories
-     */
     public function __construct(
         DocumentationGeneratorRestApiToFinderInterface $finder,
         DocumentationGeneratorRestApiToTextInflectorInterface $inflector,
@@ -84,11 +79,6 @@ class GlueControllerFinder implements GlueControllerFinderInterface
         return iterator_to_array($finder);
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     *
-     * @return string
-     */
     protected function getPluginControllerClass(ResourceRoutePluginInterface $plugin): string
     {
         $controllerClass = $this->inflector->classify($plugin->getController()) . static::CONTROLLER_SUFFIX;

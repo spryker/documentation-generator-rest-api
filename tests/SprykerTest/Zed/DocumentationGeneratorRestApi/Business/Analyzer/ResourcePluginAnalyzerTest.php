@@ -46,9 +46,6 @@ class ResourcePluginAnalyzerTest extends Unit
      */
     protected $resourcePluginAnalyzer;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -56,9 +53,6 @@ class ResourcePluginAnalyzerTest extends Unit
         $this->resourcePluginAnalyzer = (new DocumentationGeneratorRestApiTestFactory(''))->createResourcePluginAnalyzer();
     }
 
-    /**
-     * @return void
-     */
     public function testCreateRestApiDocumentationFromPlugins(): void
     {
         $generatedDocumentationData = $this->resourcePluginAnalyzer->createRestApiDocumentationFromPlugins();

@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\SchemaPropertyComponentTransfer;
 
 interface SchemaPropertySpecificationComponentInterface extends SpecificationComponentInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\SchemaPropertyComponentTransfer $schemaPropertyComponentTransfer
-     *
-     * @return void
-     */
     public function setSchemaPropertyComponentTransfer(SchemaPropertyComponentTransfer $schemaPropertyComponentTransfer): void;
 }

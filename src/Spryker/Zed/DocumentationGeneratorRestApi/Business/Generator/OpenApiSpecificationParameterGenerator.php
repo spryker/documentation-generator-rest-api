@@ -43,9 +43,6 @@ class OpenApiSpecificationParameterGenerator implements OpenApiSpecificationPara
      */
     protected $parameterSchemeRenderer;
 
-    /**
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Business\Renderer\ParameterRendererInterface $parameterSchemeRenderer
-     */
     public function __construct(ParameterRendererInterface $parameterSchemeRenderer)
     {
         $this->parameterSchemeRenderer = $parameterSchemeRenderer;
@@ -53,9 +50,6 @@ class OpenApiSpecificationParameterGenerator implements OpenApiSpecificationPara
         $this->addDefaultParameters();
     }
 
-    /**
-     * @return array
-     */
     public function getParameters(): array
     {
         ksort($this->parameters);
@@ -63,27 +57,16 @@ class OpenApiSpecificationParameterGenerator implements OpenApiSpecificationPara
         return $this->parameters;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ParameterTransfer $parameterTransfer
-     *
-     * @return void
-     */
     public function addParameter(ParameterTransfer $parameterTransfer): void
     {
         $this->parameters = array_replace_recursive($this->parameters, $this->parameterSchemeRenderer->render($parameterTransfer));
     }
 
-    /**
-     * @return void
-     */
     protected function addDefaultParameters(): void
     {
         $this->addAcceptLanguageParameter();
     }
 
-    /**
-     * @return void
-     */
     protected function addAcceptLanguageParameter(): void
     {
         $language = $this->createParameter(
@@ -98,16 +81,6 @@ class OpenApiSpecificationParameterGenerator implements OpenApiSpecificationPara
         $this->addParameter($language);
     }
 
-    /**
-     * @param string $refName
-     * @param string $in
-     * @param string $description
-     * @param string $name
-     * @param bool $required
-     * @param \Generated\Shared\Transfer\ParameterSchemaTransfer $parameterScheme
-     *
-     * @return \Generated\Shared\Transfer\ParameterTransfer
-     */
     protected function createParameter(
         string $refName,
         string $in,
@@ -127,11 +100,6 @@ class OpenApiSpecificationParameterGenerator implements OpenApiSpecificationPara
         return $parameter;
     }
 
-    /**
-     * @param string $type
-     *
-     * @return \Generated\Shared\Transfer\ParameterSchemaTransfer
-     */
     protected function createParameterScheme(string $type): ParameterSchemaTransfer
     {
         $parameterSchemaTransfer = new ParameterSchemaTransfer();

@@ -27,9 +27,6 @@ class TestSecondNestedResourceRelationshipPlugin implements ResourceRelationship
     {
     }
 
-    /**
-     * @return string
-     */
     public function getRelationshipResourceType(): string
     {
         return 'test-second-nested-resource';

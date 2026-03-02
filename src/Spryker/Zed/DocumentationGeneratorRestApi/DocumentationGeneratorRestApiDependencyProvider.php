@@ -61,11 +61,6 @@ class DocumentationGeneratorRestApiDependencyProvider extends AbstractBundleDepe
      */
     public const TEXT_INFLECTOR = 'TEXT_INFLECTOR';
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = $this->addUtilEncodingService($container);
@@ -80,11 +75,6 @@ class DocumentationGeneratorRestApiDependencyProvider extends AbstractBundleDepe
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addUtilEncodingService(Container $container): Container
     {
         $container->set(static::SERVICE_UTIL_ENCODING, function (Container $container) {
@@ -96,11 +86,6 @@ class DocumentationGeneratorRestApiDependencyProvider extends AbstractBundleDepe
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addYamlDumper(Container $container): Container
     {
         $container->set(static::YAML_DUMPER, function () {
@@ -110,11 +95,6 @@ class DocumentationGeneratorRestApiDependencyProvider extends AbstractBundleDepe
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addFilesystem(Container $container): Container
     {
         $container->set(static::FILESYSTEM, function () {
@@ -124,11 +104,6 @@ class DocumentationGeneratorRestApiDependencyProvider extends AbstractBundleDepe
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addFinder(Container $container): Container
     {
         $container->set(static::FINDER, function () {
@@ -138,11 +113,6 @@ class DocumentationGeneratorRestApiDependencyProvider extends AbstractBundleDepe
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addTextInflector(Container $container): Container
     {
         $container->set(static::TEXT_INFLECTOR, function () {
@@ -152,11 +122,6 @@ class DocumentationGeneratorRestApiDependencyProvider extends AbstractBundleDepe
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addResourceRoutePluginProviderPlugins(Container $container): Container
     {
         $container->set(static::PLUGIN_RESOURCE_ROUTE_PLUGIN_PROVIDERS, function () {
@@ -166,11 +131,6 @@ class DocumentationGeneratorRestApiDependencyProvider extends AbstractBundleDepe
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addResourceRouteCollection(Container $container): Container
     {
         $container->set(static::COLLECTION_RESOURCE_ROUTE, function () {
@@ -188,11 +148,6 @@ class DocumentationGeneratorRestApiDependencyProvider extends AbstractBundleDepe
         return [];
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addResourceRelationshipCollectionProviderPlugin(Container $container): Container
     {
         $container->set(static::PLUGIN_RESOURCE_RELATIONSHIP_COLLECTION_PROVIDER, function () {

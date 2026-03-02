@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\SecuritySchemeComponentTransfer;
 
 interface SecuritySchemeSpecificationComponentInterface extends SpecificationComponentInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\SecuritySchemeComponentTransfer $securitySchemeComponentTransfer
-     *
-     * @return void
-     */
     public function setSecuritySchemeComponentTransfer(SecuritySchemeComponentTransfer $securitySchemeComponentTransfer): void;
 }

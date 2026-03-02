@@ -9,16 +9,10 @@ namespace SprykerTest\Zed\DocumentationGeneratorRestApi\Business\Stub\Controller
 
 class TestResourceWithoutAnnotationsController
 {
-    /**
-     * @return void
-     */
     public function getAction(): void
     {
     }
 
-    /**
-     * @return void
-     */
     public function postAction(): void
     {
     }

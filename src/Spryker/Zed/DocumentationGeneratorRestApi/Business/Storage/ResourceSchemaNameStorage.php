@@ -14,22 +14,11 @@ class ResourceSchemaNameStorage implements ResourceSchemaNameStorageInterface
      */
     protected static $resourceTypes = [];
 
-    /**
-     * @param string $resourceType
-     * @param string $responseAttributesSchemaName
-     *
-     * @return void
-     */
     public function addResourceSchemaName(string $resourceType, string $responseAttributesSchemaName): void
     {
         static::$resourceTypes[$resourceType] = $responseAttributesSchemaName;
     }
 
-    /**
-     * @param string $resourceType
-     *
-     * @return string
-     */
     public function getResourceSchemaNameByResourceType(string $resourceType): string
     {
         return static::$resourceTypes[$resourceType] ?? '';

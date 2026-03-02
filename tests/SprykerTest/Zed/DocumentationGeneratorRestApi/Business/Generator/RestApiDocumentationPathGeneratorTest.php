@@ -66,9 +66,6 @@ class RestApiDocumentationPathGeneratorTest extends Unit
      */
     protected $pathGenerator;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -76,9 +73,6 @@ class RestApiDocumentationPathGeneratorTest extends Unit
         $this->pathGenerator = (new DocumentationGeneratorRestApiTestFactory(''))->createOpenApiSpecificationPathGenerator();
     }
 
-    /**
-     * @return void
-     */
     public function testAddGetPathShouldGenerateValidGetMethodDataForPath(): void
     {
         $pathMethodDataTransfer = $this->tester->getPathMethodDataTransferForGetMethod();
@@ -92,9 +86,6 @@ class RestApiDocumentationPathGeneratorTest extends Unit
         $this->assertArraySubset($this->tester->getPathGeneratorExpectedGetPathData(), $paths[static::TEST_PATH]);
     }
 
-    /**
-     * @return array
-     */
     public function statusCodesAndDescriptionDataProvider(): array
     {
         return [
@@ -129,9 +120,6 @@ class RestApiDocumentationPathGeneratorTest extends Unit
         $this->assertArraySubset($this->tester->getPathGeneratorExpectedGetPathData($code, $description), $paths[static::TEST_PATH]);
     }
 
-    /**
-     * @return void
-     */
     public function testAddPostPath(): void
     {
         //Arrange
@@ -175,9 +163,6 @@ class RestApiDocumentationPathGeneratorTest extends Unit
         $this->assertArraySubset($this->tester->getPathGeneratorExpectedPostPathData($code, $description), $paths[static::TEST_PATH]);
     }
 
-    /**
-     * @return void
-     */
     public function testAddPatchPath(): void
     {
         //Arrange
@@ -221,9 +206,6 @@ class RestApiDocumentationPathGeneratorTest extends Unit
         $this->assertArraySubset($this->tester->getPathGeneratorExpectedPatchPathData($code, $description), $paths[static::TEST_PATH_WITH_ID]);
     }
 
-    /**
-     * @return void
-     */
     public function testAddPatchPathWithoutPassingResponseTransferShouldGenerateValidPatchMethodDataForPath(): void
     {
         //Arrange
@@ -242,9 +224,6 @@ class RestApiDocumentationPathGeneratorTest extends Unit
         $this->assertArrayNotHasKey('content', $paths[static::TEST_PATH_WITH_ID][static::METHOD_PATCH]['responses']);
     }
 
-    /**
-     * @return void
-     */
     public function testAddDeletePath(): void
     {
         //Arrange

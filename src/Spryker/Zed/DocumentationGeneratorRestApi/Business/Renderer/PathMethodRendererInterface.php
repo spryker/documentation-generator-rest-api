@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\PathMethodDataTransfer;
 
 interface PathMethodRendererInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\PathMethodDataTransfer $pathMethodDataTransfer
-     *
-     * @return array
-     */
     public function render(PathMethodDataTransfer $pathMethodDataTransfer): array;
 }

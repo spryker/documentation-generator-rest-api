@@ -34,19 +34,11 @@ class ResourceRelationshipsPluginAnnotationAnalyzer implements ResourceRelations
      */
     protected $utilEncodingService;
 
-    /**
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Dependency\Service\DocumentationGeneratorRestApiToUtilEncodingServiceInterface $utilEncodingService
-     */
     public function __construct(DocumentationGeneratorRestApiToUtilEncodingServiceInterface $utilEncodingService)
     {
         $this->utilEncodingService = $utilEncodingService;
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationshipPluginInterface $plugin
-     *
-     * @return \Generated\Shared\Transfer\PluginAnnotationsTransfer
-     */
     public function getResourceAttributesFromResourceRelationshipPlugin(ResourceRelationshipPluginInterface $plugin): PluginAnnotationsTransfer
     {
         $pluginAnnotationsTransfer = new PluginAnnotationsTransfer();
@@ -61,11 +53,6 @@ class ResourceRelationshipsPluginAnnotationAnalyzer implements ResourceRelations
         return $pluginAnnotationsTransfer->fromArray(array_replace_recursive(...$parameters), true);
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationshipPluginInterface $plugin
-     *
-     * @return string
-     */
     protected function getClassFileName(ResourceRelationshipPluginInterface $plugin): string
     {
         $reflectionClass = new ReflectionClass(get_class($plugin));
@@ -74,11 +61,6 @@ class ResourceRelationshipsPluginAnnotationAnalyzer implements ResourceRelations
         return $reflectionClass->getFileName();
     }
 
-    /**
-     * @param string $pluginFileName
-     *
-     * @return array
-     */
     protected function getParsedPhpTokens(string $pluginFileName): array
     {
         /** @var string $pluginContents */
@@ -89,11 +71,6 @@ class ResourceRelationshipsPluginAnnotationAnalyzer implements ResourceRelations
         return $this->parsePhpTokens($tokens);
     }
 
-    /**
-     * @param array $phpTokens
-     *
-     * @return array
-     */
     protected function parsePhpTokens(array $phpTokens): array
     {
         $result = [];
@@ -161,12 +138,6 @@ class ResourceRelationshipsPluginAnnotationAnalyzer implements ResourceRelations
         return $annotationsTransformed;
     }
 
-    /**
-     * @param array $annotationsParsed
-     * @param array $result
-     *
-     * @return array
-     */
     protected function getDataFromParsedAnnotations(array $annotationsParsed, array $result): array
     {
         foreach ($annotationsParsed as $annotationParsed) {

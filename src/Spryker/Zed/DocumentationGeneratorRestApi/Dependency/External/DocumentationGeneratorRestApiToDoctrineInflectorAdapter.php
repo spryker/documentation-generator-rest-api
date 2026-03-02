@@ -12,11 +12,6 @@ use Doctrine\Inflector\InflectorFactory;
 
 class DocumentationGeneratorRestApiToDoctrineInflectorAdapter implements DocumentationGeneratorRestApiToTextInflectorInterface
 {
-    /**
-     * @param string $word
-     *
-     * @return string
-     */
     public function classify(string $word): string
     {
         if (class_exists(InflectorFactory::class)) {
@@ -28,11 +23,6 @@ class DocumentationGeneratorRestApiToDoctrineInflectorAdapter implements Documen
         return Inflector::classify($word);
     }
 
-    /**
-     * @param string $word
-     *
-     * @return string
-     */
     public function singularize(string $word): string
     {
         if (class_exists(InflectorFactory::class)) {

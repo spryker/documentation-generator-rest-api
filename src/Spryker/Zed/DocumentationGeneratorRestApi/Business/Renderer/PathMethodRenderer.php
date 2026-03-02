@@ -76,12 +76,6 @@ class PathMethodRenderer implements PathMethodRendererInterface
      */
     protected $pathParameterSpecificationComponent;
 
-    /**
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Business\Renderer\Component\PathMethodSpecificationComponentInterface $pathMethodSpecificationComponent
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Business\Renderer\Component\PathResponseSpecificationComponentInterface $pathResponseSpecificationComponent
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Business\Renderer\Component\PathRequestSpecificationComponentInterface $pathRequestSpecificationComponent
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Business\Renderer\Component\PathParameterSpecificationComponentInterface $pathParameterSpecificationComponent
-     */
     public function __construct(
         PathMethodSpecificationComponentInterface $pathMethodSpecificationComponent,
         PathResponseSpecificationComponentInterface $pathResponseSpecificationComponent,
@@ -94,11 +88,6 @@ class PathMethodRenderer implements PathMethodRendererInterface
         $this->pathParameterSpecificationComponent = $pathParameterSpecificationComponent;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PathMethodDataTransfer $pathMethodDataTransfer
-     *
-     * @return array
-     */
     public function render(PathMethodDataTransfer $pathMethodDataTransfer): array
     {
         $pathMethodComponentTransfer = new PathMethodComponentTransfer();
@@ -137,11 +126,6 @@ class PathMethodRenderer implements PathMethodRendererInterface
         return [];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PathMethodDataTransfer $pathMethodDataTransfer
-     *
-     * @return string
-     */
     protected function getFormattedSummary(PathMethodDataTransfer $pathMethodDataTransfer): string
     {
         return implode(PHP_EOL, (array)$pathMethodDataTransfer->getSummary());
@@ -172,12 +156,6 @@ class PathMethodRenderer implements PathMethodRendererInterface
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PathMethodComponentTransfer $methodComponent
-     * @param \Generated\Shared\Transfer\PathSchemaDataTransfer $schemaDataTransfer
-     *
-     * @return void
-     */
     protected function addRequestComponent(PathMethodComponentTransfer $methodComponent, PathSchemaDataTransfer $schemaDataTransfer): void
     {
         $requestComponentTransfer = new PathRequestComponentTransfer();
@@ -193,12 +171,6 @@ class PathMethodRenderer implements PathMethodRendererInterface
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PathMethodComponentTransfer $methodComponent
-     * @param string $path
-     *
-     * @return void
-     */
     protected function addIdParametersFromPath(PathMethodComponentTransfer $methodComponent, string $path): void
     {
         $pathParameters = $this->getPathParametersFromResourcePath($path);
@@ -215,12 +187,6 @@ class PathMethodRenderer implements PathMethodRendererInterface
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PathMethodComponentTransfer $methodComponent
-     * @param \Generated\Shared\Transfer\PathMethodDataTransfer $pathMethodDataTransfer
-     *
-     * @return void
-     */
     protected function addPathParameterComponents(PathMethodComponentTransfer $methodComponent, PathMethodDataTransfer $pathMethodDataTransfer): void
     {
         foreach ($pathMethodDataTransfer->getParameters() as $parameterComponentTransfer) {
@@ -228,12 +194,6 @@ class PathMethodRenderer implements PathMethodRendererInterface
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PathMethodComponentTransfer $methodComponent
-     * @param \Generated\Shared\Transfer\PathParameterComponentTransfer $parameterComponentTransfer
-     *
-     * @return void
-     */
     protected function addPathParameterComponent(PathMethodComponentTransfer $methodComponent, PathParameterComponentTransfer $parameterComponentTransfer): void
     {
         if ($parameterComponentTransfer->getRequired() === null) {
@@ -254,11 +214,6 @@ class PathMethodRenderer implements PathMethodRendererInterface
         }
     }
 
-    /**
-     * @param string $resourcePath
-     *
-     * @return array
-     */
     protected function getPathParametersFromResourcePath(string $resourcePath): array
     {
         preg_match_all(static::PATTERN_REGEX_RESOURCE_ID, $resourcePath, $matches);
@@ -266,11 +221,6 @@ class PathMethodRenderer implements PathMethodRendererInterface
         return $matches[0] ?? [];
     }
 
-    /**
-     * @param string $parameter
-     *
-     * @return string
-     */
     protected function getPathParameterDescription(string $parameter): string
     {
         $pieces = preg_split(static::PATTERN_REGEX_WORD_SLICE, $parameter);

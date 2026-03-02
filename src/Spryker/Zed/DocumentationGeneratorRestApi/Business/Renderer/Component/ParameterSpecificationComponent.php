@@ -21,19 +21,11 @@ class ParameterSpecificationComponent implements ParameterSpecificationComponent
      */
     protected $parameterComponentTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ParameterComponentTransfer $parameterComponentTransfer
-     *
-     * @return void
-     */
     public function setParameterComponentTransfer(ParameterComponentTransfer $parameterComponentTransfer): void
     {
         $this->parameterComponentTransfer = $parameterComponentTransfer;
     }
 
-    /**
-     * @return array
-     */
     public function getSpecificationComponentData(): array
     {
         if (!$this->requireComponentTransferData()) {
@@ -51,9 +43,6 @@ class ParameterSpecificationComponent implements ParameterSpecificationComponent
         ];
     }
 
-    /**
-     * @return bool
-     */
     protected function requireComponentTransferData(): bool
     {
         if (!$this->parameterComponentTransfer) {

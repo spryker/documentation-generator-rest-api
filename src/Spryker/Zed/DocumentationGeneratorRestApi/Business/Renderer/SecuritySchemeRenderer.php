@@ -18,19 +18,11 @@ class SecuritySchemeRenderer implements SecuritySchemeRendererInterface
      */
     protected $securitySchemeSpecificationComponent;
 
-    /**
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Business\Renderer\Component\SecuritySchemeSpecificationComponentInterface $securitySchemeSpecificationComponent
-     */
     public function __construct(SecuritySchemeSpecificationComponentInterface $securitySchemeSpecificationComponent)
     {
         $this->securitySchemeSpecificationComponent = $securitySchemeSpecificationComponent;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SecuritySchemeTransfer $securitySchemeTransfer
-     *
-     * @return array
-     */
     public function render(SecuritySchemeTransfer $securitySchemeTransfer): array
     {
         $securitySchemeComponentTransfer = new SecuritySchemeComponentTransfer();

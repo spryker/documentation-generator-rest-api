@@ -31,9 +31,6 @@ class GlueControllerFinderTest extends Unit
      */
     protected const CONTROLLER_FILE_NAME = 'TestResourceController.php';
 
-    /**
-     * @return void
-     */
     public function testGetGlueControllerFilesFromPluginShouldReturnArrayOfSplFileInfoObjects(): void
     {
         $controllerFinder = $this->getGlueControllerFinder([DocumentationGeneratorRestApiTestFactory::CONTROLLER_SOURCE_DIRECTORY]);
@@ -46,9 +43,6 @@ class GlueControllerFinderTest extends Unit
         }
     }
 
-    /**
-     * @return void
-     */
     public function testGetGlueControllerFilesFromPluginShouldReturnCorrectControllerFile(): void
     {
         $controllerFinder = $this->getGlueControllerFinder([DocumentationGeneratorRestApiTestFactory::CONTROLLER_SOURCE_DIRECTORY]);
@@ -61,9 +55,6 @@ class GlueControllerFinderTest extends Unit
         }
     }
 
-    /**
-     * @return void
-     */
     public function testGetGlueControllerFilesFromPluginShouldReturnEmptyArrayIfNoExistingDirectoryIsFound(): void
     {
         $controllerFinder = $this->getGlueControllerFinder([]);
@@ -73,11 +64,6 @@ class GlueControllerFinderTest extends Unit
         $this->assertEmpty($files);
     }
 
-    /**
-     * @param array $sourceDirectories
-     *
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Finder\GlueControllerFinderInterface
-     */
     protected function getGlueControllerFinder(array $sourceDirectories): GlueControllerFinderInterface
     {
         return (new DocumentationGeneratorRestApiTestFactory(''))->createGlueControllerFinder($sourceDirectories);

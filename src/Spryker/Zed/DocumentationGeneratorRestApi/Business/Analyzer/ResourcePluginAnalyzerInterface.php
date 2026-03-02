@@ -9,8 +9,5 @@ namespace Spryker\Zed\DocumentationGeneratorRestApi\Business\Analyzer;
 
 interface ResourcePluginAnalyzerInterface
 {
-    /**
-     * @return array
-     */
     public function createRestApiDocumentationFromPlugins(): array;
 }

@@ -12,10 +12,5 @@ use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationship
 
 interface ResourceRelationshipsPluginAnnotationAnalyzerInterface
 {
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationshipPluginInterface $plugin
-     *
-     * @return \Generated\Shared\Transfer\PluginAnnotationsTransfer
-     */
     public function getResourceAttributesFromResourceRelationshipPlugin(ResourceRelationshipPluginInterface $plugin): PluginAnnotationsTransfer;
 }

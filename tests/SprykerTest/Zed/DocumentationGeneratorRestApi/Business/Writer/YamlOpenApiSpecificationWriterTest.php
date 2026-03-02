@@ -44,9 +44,6 @@ class YamlOpenApiSpecificationWriterTest extends Unit
      */
     protected $config;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -55,9 +52,6 @@ class YamlOpenApiSpecificationWriterTest extends Unit
         $this->config = (new DocumentationGeneratorRestApiTestFactory(''))->createConfig();
     }
 
-    /**
-     * @return void
-     */
     public function testWriteShouldCreateAFile(): void
     {
         $data = $this->tester->getRestApiDocumentationFromPluginsExpectedResult();
@@ -68,9 +62,6 @@ class YamlOpenApiSpecificationWriterTest extends Unit
         $this->assertCount(1, $finder);
     }
 
-    /**
-     * @return void
-     */
     protected function tearDown(): void
     {
         $finder = new Finder();

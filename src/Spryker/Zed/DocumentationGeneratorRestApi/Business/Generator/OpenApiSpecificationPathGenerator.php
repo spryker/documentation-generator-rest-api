@@ -46,29 +46,16 @@ class OpenApiSpecificationPathGenerator implements PathGeneratorInterface
      */
     protected $pathMethodRenderer;
 
-    /**
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Business\Renderer\PathMethodRendererInterface $pathMethodRenderer
-     */
     public function __construct(PathMethodRendererInterface $pathMethodRenderer)
     {
         $this->pathMethodRenderer = $pathMethodRenderer;
     }
 
-    /**
-     * @return array
-     */
     public function getPaths(): array
     {
         return $this->paths;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PathMethodDataTransfer $pathMethodDataTransfer
-     * @param \Generated\Shared\Transfer\PathSchemaDataTransfer $errorSchemaDataTransfer
-     * @param \Generated\Shared\Transfer\PathSchemaDataTransfer|null $responseSchemaDataTransfer
-     *
-     * @return void
-     */
     public function addGetPath(
         PathMethodDataTransfer $pathMethodDataTransfer,
         PathSchemaDataTransfer $errorSchemaDataTransfer,
@@ -95,14 +82,6 @@ class OpenApiSpecificationPathGenerator implements PathGeneratorInterface
         $this->addPath($pathMethodDataTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PathMethodDataTransfer $pathMethodDataTransfer
-     * @param \Generated\Shared\Transfer\PathSchemaDataTransfer $requestSchemaDataTransfer
-     * @param \Generated\Shared\Transfer\PathSchemaDataTransfer $errorSchemaDataTransfer
-     * @param \Generated\Shared\Transfer\PathSchemaDataTransfer|null $responseSchemaDataTransfer
-     *
-     * @return void
-     */
     public function addPostPath(
         PathMethodDataTransfer $pathMethodDataTransfer,
         PathSchemaDataTransfer $requestSchemaDataTransfer,
@@ -134,14 +113,6 @@ class OpenApiSpecificationPathGenerator implements PathGeneratorInterface
         $this->addPath($pathMethodDataTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PathMethodDataTransfer $pathMethodDataTransfer
-     * @param \Generated\Shared\Transfer\PathSchemaDataTransfer $requestSchemaDataTransfer
-     * @param \Generated\Shared\Transfer\PathSchemaDataTransfer $errorSchemaDataTransfer
-     * @param \Generated\Shared\Transfer\PathSchemaDataTransfer|null $responseSchemaDataTransfer
-     *
-     * @return void
-     */
     public function addPatchPath(
         PathMethodDataTransfer $pathMethodDataTransfer,
         PathSchemaDataTransfer $requestSchemaDataTransfer,
@@ -174,12 +145,6 @@ class OpenApiSpecificationPathGenerator implements PathGeneratorInterface
         $this->addPath($pathMethodDataTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PathMethodDataTransfer $pathMethodDataTransfer
-     * @param \Generated\Shared\Transfer\PathSchemaDataTransfer $errorSchemaDataTransfer
-     *
-     * @return void
-     */
     public function addDeletePath(
         PathMethodDataTransfer $pathMethodDataTransfer,
         PathSchemaDataTransfer $errorSchemaDataTransfer
@@ -201,32 +166,16 @@ class OpenApiSpecificationPathGenerator implements PathGeneratorInterface
         $this->addPath($pathMethodDataTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PathMethodDataTransfer $pathMethodDataTransfer
-     *
-     * @return void
-     */
     protected function addPath(PathMethodDataTransfer $pathMethodDataTransfer): void
     {
         $this->paths = array_replace_recursive($this->paths, $this->pathMethodRenderer->render($pathMethodDataTransfer));
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PathMethodDataTransfer $pathMethodDataTransfer
-     * @param string $defaultMethodStatusCode
-     *
-     * @return string
-     */
     protected function getResponseStatusCode(PathMethodDataTransfer $pathMethodDataTransfer, string $defaultMethodStatusCode): string
     {
         return $pathMethodDataTransfer->getIsEmptyResponse() ? (string)Response::HTTP_NO_CONTENT : $defaultMethodStatusCode;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PathSchemaDataTransfer $errorSchemaDataTransfer
-     *
-     * @return \Generated\Shared\Transfer\PathSchemaDataTransfer
-     */
     protected function addDefaultErrorToErrorSchemaDataTransfer(PathSchemaDataTransfer $errorSchemaDataTransfer): PathSchemaDataTransfer
     {
         $errorSchemaDataTransfer->setCode(static::KEY_DEFAULT);
@@ -235,13 +184,6 @@ class OpenApiSpecificationPathGenerator implements PathGeneratorInterface
         return $errorSchemaDataTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PathMethodDataTransfer $pathMethodDataTransfer
-     * @param \Generated\Shared\Transfer\PathSchemaDataTransfer $responseSchemaDataTransfer
-     * @param string $defaultResponseCode
-     *
-     * @return \Generated\Shared\Transfer\PathSchemaDataTransfer|null
-     */
     protected function addDefaultSuccessResponseToResponseSchemaDataTransfer(
         PathMethodDataTransfer $pathMethodDataTransfer,
         PathSchemaDataTransfer $responseSchemaDataTransfer,

@@ -52,10 +52,6 @@ class GlueAnnotationAnalyzer implements GlueAnnotationAnalyzerInterface
      */
     protected $utilEncodingService;
 
-    /**
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Business\Finder\GlueControllerFinderInterface $glueControllerFinder
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Dependency\Service\DocumentationGeneratorRestApiToUtilEncodingServiceInterface $utilEncodingService
-     */
     public function __construct(
         GlueControllerFinderInterface $glueControllerFinder,
         DocumentationGeneratorRestApiToUtilEncodingServiceInterface $utilEncodingService
@@ -64,11 +60,6 @@ class GlueAnnotationAnalyzer implements GlueAnnotationAnalyzerInterface
         $this->utilEncodingService = $utilEncodingService;
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     *
-     * @return \Generated\Shared\Transfer\PathAnnotationsTransfer
-     */
     public function getResourceParametersFromPlugin(ResourceRoutePluginInterface $plugin): PathAnnotationsTransfer
     {
         $glueControllerFiles = $this->glueControllerFinder->getGlueControllerFilesFromPlugin($plugin);
@@ -91,11 +82,6 @@ class GlueAnnotationAnalyzer implements GlueAnnotationAnalyzerInterface
         return $pathAnnotationsTransfer;
     }
 
-    /**
-     * @param array $phpTokens
-     *
-     * @return array
-     */
     protected function parsePhpTokens(array $phpTokens): array
     {
         $result = [];
@@ -157,12 +143,6 @@ class GlueAnnotationAnalyzer implements GlueAnnotationAnalyzerInterface
         return $annotationsTransformed;
     }
 
-    /**
-     * @param array $annotationsParsed
-     * @param array $result
-     *
-     * @return array
-     */
     protected function getDataFromParsedAnnotations(array $annotationsParsed, array $result): array
     {
         foreach ($annotationsParsed as $annotationParsed) {

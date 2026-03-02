@@ -63,9 +63,6 @@ class HttpMethodProcessorTest extends Unit
      */
     protected $methodProcessor;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -73,9 +70,6 @@ class HttpMethodProcessorTest extends Unit
         $this->methodProcessor = (new DocumentationGeneratorRestApiTestFactory(''))->createRestApiMethodProcessor();
     }
 
-    /**
-     * @return void
-     */
     public function testAddGetResourceCollectionPathWithoutAnnotationsShouldAddGetCollectionToPaths(): void
     {
         $this->methodProcessor->addGetResourceCollectionPath(
@@ -93,9 +87,6 @@ class HttpMethodProcessorTest extends Unit
         $this->assertArraySubset($this->tester->getMethodProcessorGetResourceCollectionWithoutAnnotationsExpectedData(), $generatedPaths);
     }
 
-    /**
-     * @return void
-     */
     public function testAddGetResourceCollectionPathWithAnnotationsWithEmptyResponseShouldAddGetToPathsWithEmptyResponseSchema(): void
     {
         $this->methodProcessor->addGetResourceCollectionPath(
@@ -113,9 +104,6 @@ class HttpMethodProcessorTest extends Unit
         $this->assertArraySubset($this->tester->getMethodProcessorGetResourceCollectionPathWithAnnotationsWithEmptyResponseExpectedData(), $generatedPaths);
     }
 
-    /**
-     * @return void
-     */
     public function testAddGetResourceCollectionPathWithAnnotationsShouldAddGetToPathsWithDataFromAnnotations(): void
     {
         $this->methodProcessor->addGetResourceCollectionPath(
@@ -133,9 +121,6 @@ class HttpMethodProcessorTest extends Unit
         $this->assertArraySubset($this->tester->getMethodProcessorGetResourceCollectionPathWithAnnotationsExpectedData(), $generatedPaths);
     }
 
-    /**
-     * @return void
-     */
     public function testAddDeleteResourcePathShouldAddDeleteToPaths(): void
     {
         $this->methodProcessor->addDeleteResourcePath(
@@ -152,9 +137,6 @@ class HttpMethodProcessorTest extends Unit
         $this->assertArraySubset($this->tester->getMethodProcessorDeleteResourcePathExpectedData(), $generatedPaths);
     }
 
-    /**
-     * @return void
-     */
     public function testAddPatchResourcePathShouldAddPatchToPaths(): void
     {
         $this->methodProcessor->addPatchResourcePath(
@@ -171,9 +153,6 @@ class HttpMethodProcessorTest extends Unit
         $this->assertArraySubset($this->tester->getMethodProcessorPatchResourcePathExpectedData(), $generatedPaths);
     }
 
-    /**
-     * @return void
-     */
     public function testAddPostResourcePathShouldAddPostToPaths(): void
     {
         $this->methodProcessor->addPostResourcePath(
@@ -190,9 +169,6 @@ class HttpMethodProcessorTest extends Unit
         $this->assertArraySubset($this->tester->getMethodProcessorPostResourcePathExpectedData(), $generatedPaths);
     }
 
-    /**
-     * @return void
-     */
     public function testAddPostResourcePathWithAnnotationsWithEmptyResponseShouldAddPostToPathsWithEmptyResponseSchema(): void
     {
         $this->methodProcessor->addPostResourcePath(
@@ -209,9 +185,6 @@ class HttpMethodProcessorTest extends Unit
         $this->assertArraySubset($this->tester->getMethodProcessorPostResourcePathWithAnnotationsWithEmptyResponseExpectedData(), $generatedPaths);
     }
 
-    /**
-     * @return void
-     */
     public function testAddGetResourceByIdPathShouldAddGetResourceToPaths(): void
     {
         $this->methodProcessor->addGetResourceByIdPath(
@@ -229,9 +202,6 @@ class HttpMethodProcessorTest extends Unit
         $this->assertArraySubset($this->tester->getMethodProcessorGetResourceByIdPathExpectedData(), $generatedPaths);
     }
 
-    /**
-     * @return void
-     */
     public function testAddDeprecatedFlagToMethod(): void
     {
         $this->methodProcessor->addGetResourceByIdPath(

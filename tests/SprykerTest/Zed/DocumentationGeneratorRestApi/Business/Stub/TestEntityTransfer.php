@@ -65,9 +65,6 @@ class TestEntityTransfer extends AbstractEntityTransfer
         ],
     ];
 
-    /**
-     * @return string|null
-     */
     public function getAttribute1(): ?string
     {
         return $this->attribute1;
@@ -86,9 +83,6 @@ class TestEntityTransfer extends AbstractEntityTransfer
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getAttribute2(): ?string
     {
         return $this->attribute2;

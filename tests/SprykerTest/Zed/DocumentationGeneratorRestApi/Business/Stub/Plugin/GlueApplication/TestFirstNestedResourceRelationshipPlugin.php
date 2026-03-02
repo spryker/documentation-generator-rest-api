@@ -27,9 +27,6 @@ class TestFirstNestedResourceRelationshipPlugin implements ResourceRelationshipP
     {
     }
 
-    /**
-     * @return string
-     */
     public function getRelationshipResourceType(): string
     {
         return 'test-first-nested-resource';

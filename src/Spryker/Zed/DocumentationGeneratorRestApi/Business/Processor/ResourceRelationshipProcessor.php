@@ -37,12 +37,6 @@ class ResourceRelationshipProcessor implements ResourceRelationshipProcessorInte
      */
     protected $resourceRelationshipsPluginAnnotationAnalyzer;
 
-    /**
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Business\Analyzer\ResourceRelationshipsPluginAnalyzerInterface $resourceRelationshipPluginAnalyzer
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Business\Analyzer\ResourceTransferAnalyzerInterface $resourceTransferAnalyzer
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Business\Builder\SchemaBuilderInterface $schemaBuilder
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Business\Analyzer\ResourceRelationshipsPluginAnnotationAnalyzerInterface $resourceRelationshipsPluginAnnotationAnalyzer
-     */
     public function __construct(
         ResourceRelationshipsPluginAnalyzerInterface $resourceRelationshipPluginAnalyzer,
         ResourceTransferAnalyzerInterface $resourceTransferAnalyzer,
@@ -114,13 +108,6 @@ class ResourceRelationshipProcessor implements ResourceRelationshipProcessorInte
         return $this->schemaBuilder->createIncludedDataSchema($includedSchemaName, $resourceRelationships);
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     * @param string $transferClassName
-     * @param string $responseSchemaName
-     *
-     * @return \Generated\Shared\Transfer\SchemaDataTransfer
-     */
     public function getIncludeBaseSchemaForPlugin(
         ResourceRoutePluginInterface $plugin,
         string $transferClassName,

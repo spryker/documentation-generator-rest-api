@@ -12,36 +12,13 @@ use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginI
 
 interface SchemaGeneratorInterface
 {
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     *
-     * @return string
-     */
     public function addRequestSchemaForPlugin(ResourceRoutePluginInterface $plugin): string;
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     * @param \Generated\Shared\Transfer\AnnotationTransfer|null $annotationTransfer
-     *
-     * @return string
-     */
     public function addResponseResourceSchemaForPlugin(ResourceRoutePluginInterface $plugin, ?AnnotationTransfer $annotationTransfer = null): string;
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     * @param \Generated\Shared\Transfer\AnnotationTransfer|null $annotationTransfer
-     *
-     * @return string
-     */
     public function addResponseCollectionSchemaForPlugin(ResourceRoutePluginInterface $plugin, ?AnnotationTransfer $annotationTransfer = null): string;
 
-    /**
-     * @return string
-     */
     public function getRestErrorSchemaData(): string;
 
-    /**
-     * @return array
-     */
     public function getSchemas(): array;
 }

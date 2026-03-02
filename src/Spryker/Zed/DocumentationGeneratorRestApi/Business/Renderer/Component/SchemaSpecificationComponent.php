@@ -21,19 +21,11 @@ class SchemaSpecificationComponent implements SchemaSpecificationComponentInterf
      */
     protected $schemaComponentTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\SchemaComponentTransfer $schemaComponentTransfer
-     *
-     * @return void
-     */
     public function setSchemaComponentTransfer(SchemaComponentTransfer $schemaComponentTransfer): void
     {
         $this->schemaComponentTransfer = $schemaComponentTransfer;
     }
 
-    /**
-     * @return array
-     */
     public function getSpecificationComponentData(): array
     {
         if (!$this->validateSchemaComponentTransfer()) {
@@ -56,11 +48,6 @@ class SchemaSpecificationComponent implements SchemaSpecificationComponentInterf
         return $schemaData;
     }
 
-    /**
-     * @param array $schemaData
-     *
-     * @return array
-     */
     protected function addProperties(array $schemaData): array
     {
         if (count($this->schemaComponentTransfer->getProperties())) {
@@ -70,11 +57,6 @@ class SchemaSpecificationComponent implements SchemaSpecificationComponentInterf
         return $schemaData;
     }
 
-    /**
-     * @param array $schemaData
-     *
-     * @return array
-     */
     protected function addItems(array $schemaData): array
     {
         if ($this->schemaComponentTransfer->getItems()) {
@@ -84,11 +66,6 @@ class SchemaSpecificationComponent implements SchemaSpecificationComponentInterf
         return $schemaData;
     }
 
-    /**
-     * @param array $schemaData
-     *
-     * @return array
-     */
     protected function addRequired(array $schemaData): array
     {
         if ($this->schemaComponentTransfer->getRequired()) {
@@ -98,11 +75,6 @@ class SchemaSpecificationComponent implements SchemaSpecificationComponentInterf
         return $schemaData;
     }
 
-    /**
-     * @param array $schemaData
-     *
-     * @return array
-     */
     protected function addType(array $schemaData): array
     {
         if ($this->schemaComponentTransfer->getType()) {
@@ -112,9 +84,6 @@ class SchemaSpecificationComponent implements SchemaSpecificationComponentInterf
         return $schemaData;
     }
 
-    /**
-     * @return bool
-     */
     protected function validateSchemaComponentTransfer(): bool
     {
         if (!$this->schemaComponentTransfer) {

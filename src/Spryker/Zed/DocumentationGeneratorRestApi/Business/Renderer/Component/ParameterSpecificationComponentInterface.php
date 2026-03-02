@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\ParameterComponentTransfer;
 
 interface ParameterSpecificationComponentInterface extends SpecificationComponentInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ParameterComponentTransfer $parameterComponentTransfer
-     *
-     * @return void
-     */
     public function setParameterComponentTransfer(ParameterComponentTransfer $parameterComponentTransfer): void;
 }

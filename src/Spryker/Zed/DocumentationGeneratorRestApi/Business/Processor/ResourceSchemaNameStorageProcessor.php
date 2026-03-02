@@ -49,14 +49,6 @@ class ResourceSchemaNameStorageProcessor implements ResourceSchemaNameStoragePro
      */
     protected ResourceTransferClassNameStorageInterface $resourceTransferClassNameStorage;
 
-    /**
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Business\Storage\ResourceSchemaNameStorageInterface $resourceSchemaNameStorage
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Business\Analyzer\ResourceTransferAnalyzerInterface $resourceTransferAnalyzer
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Business\Analyzer\ResourceRelationshipsPluginAnalyzerInterface $resourceRelationshipPluginAnalyzer
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Business\Analyzer\GlueAnnotationAnalyzerInterface $glueAnnotationsAnalyser
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Business\Analyzer\ResourceRelationshipsPluginAnnotationAnalyzerInterface $resourceRelationshipsPluginAnnotationAnalyzer
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Business\Storage\ResourceTransferClassNameStorageInterface $resourceTransferClassNameStorage
-     */
     public function __construct(
         ResourceSchemaNameStorageInterface $resourceSchemaNameStorage,
         ResourceTransferAnalyzerInterface $resourceTransferAnalyzer,
@@ -73,11 +65,6 @@ class ResourceSchemaNameStorageProcessor implements ResourceSchemaNameStoragePro
         $this->resourceTransferClassNameStorage = $resourceTransferClassNameStorage;
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     *
-     * @return void
-     */
     public function addResourceSchemaNamesToStorage(ResourceRoutePluginInterface $plugin): void
     {
         $this->addResourceSchemaNameToStorage(
@@ -86,12 +73,6 @@ class ResourceSchemaNameStorageProcessor implements ResourceSchemaNameStoragePro
         );
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     * @param \Generated\Shared\Transfer\PathAnnotationsTransfer $pathAnnotationsTransfer
-     *
-     * @return void
-     */
     protected function addResourceSchemaNameToStorage(ResourceRoutePluginInterface $plugin, PathAnnotationsTransfer $pathAnnotationsTransfer): void
     {
         if ($pathAnnotationsTransfer->getGetResourceById()) {
@@ -134,22 +115,11 @@ class ResourceSchemaNameStorageProcessor implements ResourceSchemaNameStoragePro
         $this->resourceTransferClassNameStorage->addResourceTransferClassName($plugin->getResourceType(), $transferClassName);
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     * @param \Generated\Shared\Transfer\AnnotationTransfer $annotationTransfer
-     *
-     * @return string
-     */
     protected function resolveTransferClassNameForPlugin(ResourceRoutePluginInterface $plugin, AnnotationTransfer $annotationTransfer): string
     {
         return $annotationTransfer->getResponseAttributesClassName() ?: $plugin->getResourceAttributesClassName();
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     *
-     * @return void
-     */
     protected function addResourceRelationshipsToStorage(ResourceRoutePluginInterface $plugin): void
     {
         $resourceRelationships = $this->resourceRelationshipPluginAnalyzer->getResourceRelationshipsForResourceRoutePlugin($plugin);

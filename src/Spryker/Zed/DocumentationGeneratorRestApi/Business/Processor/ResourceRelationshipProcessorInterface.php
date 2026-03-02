@@ -52,13 +52,6 @@ interface ResourceRelationshipProcessorInterface
         array $resourceRelationships
     ): SchemaDataTransfer;
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     * @param string $transferClassName
-     * @param string $responseSchemaName
-     *
-     * @return \Generated\Shared\Transfer\SchemaDataTransfer
-     */
     public function getIncludeBaseSchemaForPlugin(
         ResourceRoutePluginInterface $plugin,
         string $transferClassName,

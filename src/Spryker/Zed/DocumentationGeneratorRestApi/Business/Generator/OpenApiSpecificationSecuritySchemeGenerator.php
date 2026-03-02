@@ -37,9 +37,6 @@ class OpenApiSpecificationSecuritySchemeGenerator implements SecuritySchemeGener
      */
     protected $securitySchemeRenderer;
 
-    /**
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Business\Renderer\SecuritySchemeRendererInterface $securitySchemeRenderer
-     */
     public function __construct(SecuritySchemeRendererInterface $securitySchemeRenderer)
     {
         $this->securitySchemeRenderer = $securitySchemeRenderer;
@@ -47,9 +44,6 @@ class OpenApiSpecificationSecuritySchemeGenerator implements SecuritySchemeGener
         $this->addDefaultSecuritySchemes();
     }
 
-    /**
-     * @return array
-     */
     public function getSecuritySchemes(): array
     {
         ksort($this->securitySchemes);
@@ -57,17 +51,11 @@ class OpenApiSpecificationSecuritySchemeGenerator implements SecuritySchemeGener
         return $this->securitySchemes;
     }
 
-    /**
-     * @return void
-     */
     protected function addDefaultSecuritySchemes(): void
     {
         $this->addDefaultBearerAuthSecurityScheme();
     }
 
-    /**
-     * @return void
-     */
     protected function addDefaultBearerAuthSecurityScheme(): void
     {
         $bearerAuthSchema = $this->createSecurityScheme(
@@ -79,13 +67,6 @@ class OpenApiSpecificationSecuritySchemeGenerator implements SecuritySchemeGener
         $this->addSecurityScheme($bearerAuthSchema);
     }
 
-    /**
-     * @param string $name
-     * @param string $type
-     * @param string $scheme
-     *
-     * @return \Generated\Shared\Transfer\SecuritySchemeTransfer
-     */
     protected function createSecurityScheme(string $name, string $type, string $scheme): SecuritySchemeTransfer
     {
         $securityScheme = new SecuritySchemeTransfer();
@@ -96,11 +77,6 @@ class OpenApiSpecificationSecuritySchemeGenerator implements SecuritySchemeGener
         return $securityScheme;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SecuritySchemeTransfer $securityScheme
-     *
-     * @return void
-     */
     protected function addSecurityScheme(SecuritySchemeTransfer $securityScheme): void
     {
         $this->securitySchemes = array_replace_recursive($this->securitySchemes, $this->securitySchemeRenderer->render($securityScheme));

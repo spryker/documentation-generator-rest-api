@@ -13,8 +13,5 @@ namespace Spryker\Zed\DocumentationGeneratorRestApi\Business\Generator;
  */
 interface SecuritySchemeGeneratorInterface
 {
-    /**
-     * @return array
-     */
     public function getSecuritySchemes(): array;
 }

@@ -16,9 +16,6 @@ class OpenApiTagGenerator implements OpenApiTagGeneratorInterface
      */
     protected $tags = [];
 
-    /**
-     * @return array
-     */
     public function getTags(): array
     {
         $uniqueTags = array_unique($this->tags);
@@ -27,11 +24,6 @@ class OpenApiTagGenerator implements OpenApiTagGeneratorInterface
         return $this->formatTags($uniqueTags);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PathMethodDataTransfer $pathMethodDataTransfer
-     *
-     * @return void
-     */
     public function addTag(PathMethodDataTransfer $pathMethodDataTransfer): void
     {
         if ($pathMethodDataTransfer->getResource()) {

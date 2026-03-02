@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\SchemaComponentTransfer;
 
 interface SchemaSpecificationComponentInterface extends SpecificationComponentInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\SchemaComponentTransfer $schemaComponentTransfer
-     *
-     * @return void
-     */
     public function setSchemaComponentTransfer(SchemaComponentTransfer $schemaComponentTransfer): void;
 }

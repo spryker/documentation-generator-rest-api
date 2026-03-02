@@ -62,19 +62,11 @@ class SchemaPropertySpecificationComponent implements SchemaPropertySpecificatio
      */
     protected $schemaPropertyComponentTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\SchemaPropertyComponentTransfer $schemaPropertyComponentTransfer
-     *
-     * @return void
-     */
     public function setSchemaPropertyComponentTransfer(SchemaPropertyComponentTransfer $schemaPropertyComponentTransfer): void
     {
         $this->schemaPropertyComponentTransfer = $schemaPropertyComponentTransfer;
     }
 
-    /**
-     * @return array
-     */
     public function getSpecificationComponentData(): array
     {
         $property = [];
@@ -88,11 +80,6 @@ class SchemaPropertySpecificationComponent implements SchemaPropertySpecificatio
         return [$this->schemaPropertyComponentTransfer->getName() => $property];
     }
 
-    /**
-     * @param array $schemaProperty
-     *
-     * @return array
-     */
     protected function addBasicPropertyData(array $schemaProperty): array
     {
         if ($this->schemaPropertyComponentTransfer->getType()) {
@@ -114,11 +101,6 @@ class SchemaPropertySpecificationComponent implements SchemaPropertySpecificatio
         return $schemaProperty;
     }
 
-    /**
-     * @param array $schemaProperty
-     *
-     * @return array
-     */
     protected function addItemPropertyData(array $schemaProperty): array
     {
         if ($this->schemaPropertyComponentTransfer->getItemsSchemaReference()) {
@@ -147,9 +129,6 @@ class SchemaPropertySpecificationComponent implements SchemaPropertySpecificatio
         return $schemaProperty;
     }
 
-    /**
-     * @return bool
-     */
     protected function validateSchemaPropertyComponentTransfer(): bool
     {
         if (!$this->schemaPropertyComponentTransfer) {

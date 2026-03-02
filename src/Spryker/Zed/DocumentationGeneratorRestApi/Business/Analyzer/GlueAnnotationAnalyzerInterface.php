@@ -12,10 +12,5 @@ use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginI
 
 interface GlueAnnotationAnalyzerInterface
 {
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     *
-     * @return \Generated\Shared\Transfer\PathAnnotationsTransfer
-     */
     public function getResourceParametersFromPlugin(ResourceRoutePluginInterface $plugin): PathAnnotationsTransfer;
 }

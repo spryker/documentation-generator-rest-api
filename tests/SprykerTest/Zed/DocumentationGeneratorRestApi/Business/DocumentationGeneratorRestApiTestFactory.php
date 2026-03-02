@@ -106,9 +106,6 @@ class DocumentationGeneratorRestApiTestFactory extends Unit
 {
     public const CONTROLLER_SOURCE_DIRECTORY = __DIR__ . '/Stub/Controller/';
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Writer\DocumentationWriterInterface
-     */
     public function createYamlOpenApiSpecificationWriter(): DocumentationWriterInterface
     {
         return new YamlOpenApiDocumentationWriter(
@@ -118,11 +115,6 @@ class DocumentationGeneratorRestApiTestFactory extends Unit
         );
     }
 
-    /**
-     * @param array $sourceDirectories
-     *
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Finder\GlueControllerFinderInterface
-     */
     public function createGlueControllerFinder(array $sourceDirectories): GlueControllerFinderInterface
     {
         return new GlueControllerFinder(
@@ -148,9 +140,6 @@ class DocumentationGeneratorRestApiTestFactory extends Unit
         return $mock;
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Analyzer\ResourceRelationshipsPluginAnalyzerInterface
-     */
     public function createResourceRelationshipsPluginAnalyzer(): ResourceRelationshipsPluginAnalyzerInterface
     {
         return new ResourceRelationshipsPluginAnalyzer(
@@ -159,9 +148,6 @@ class DocumentationGeneratorRestApiTestFactory extends Unit
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Analyzer\GlueAnnotationAnalyzerInterface
-     */
     public function createGlueAnnotationAnalyzer(): GlueAnnotationAnalyzerInterface
     {
         return new GlueAnnotationAnalyzer(
@@ -203,9 +189,6 @@ class DocumentationGeneratorRestApiTestFactory extends Unit
         return $pluginMock;
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationshipCollectionInterface
-     */
     public function createResourceRelationshipProcessorCollection(): ResourceRelationshipCollectionInterface
     {
         $resourceRelationshipCollection = new ResourceRelationshipCollection();
@@ -237,9 +220,6 @@ class DocumentationGeneratorRestApiTestFactory extends Unit
         return $resourceRelationshipCollection;
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Generator\SchemaGeneratorInterface
-     */
     public function createOpenApiSpecificationSchemaGenerator(): SchemaGeneratorInterface
     {
         return new OpenApiSpecificationSchemaGenerator(
@@ -253,9 +233,6 @@ class DocumentationGeneratorRestApiTestFactory extends Unit
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Analyzer\ResourcePluginAnalyzerInterface
-     */
     public function createResourcePluginAnalyzer(): ResourcePluginAnalyzerInterface
     {
         return new ResourcePluginAnalyzer(
@@ -268,9 +245,6 @@ class DocumentationGeneratorRestApiTestFactory extends Unit
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Processor\ResourceSchemaNameStorageProcessorInterface
-     */
     public function createResourceSchemaNameStorageProcessor(): ResourceSchemaNameStorageProcessorInterface
     {
         return new ResourceSchemaNameStorageProcessor(
@@ -283,25 +257,16 @@ class DocumentationGeneratorRestApiTestFactory extends Unit
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Analyzer\ResourceTransferAnalyzerInterface
-     */
     public function createResourceTransferAnalyzer(): ResourceTransferAnalyzerInterface
     {
         return new ResourceTransferAnalyzer();
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Generator\PathGeneratorInterface
-     */
     public function createOpenApiSpecificationPathGenerator(): PathGeneratorInterface
     {
         return new OpenApiSpecificationPathGenerator($this->createPathMethodRenderer());
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Processor\HttpMethodProcessorInterface
-     */
     public function createRestApiMethodProcessor(): HttpMethodProcessorInterface
     {
         return new HttpMethodProcessor(
@@ -314,33 +279,21 @@ class DocumentationGeneratorRestApiTestFactory extends Unit
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Generator\SecuritySchemeGeneratorInterface
-     */
     public function createOpenApiSpecificationSecuritySchemeGenerator(): SecuritySchemeGeneratorInterface
     {
         return new OpenApiSpecificationSecuritySchemeGenerator($this->createSecuritySchemeRenderer());
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Generator\OpenApiSpecificationParameterGeneratorInterface
-     */
     public function createOpenApiSpecificationParameterGenerator(): OpenApiSpecificationParameterGeneratorInterface
     {
         return new OpenApiSpecificationParameterGenerator($this->createParameterRenderer());
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Generator\OpenApiTagGeneratorInterface
-     */
     public function createOpenApiTagGeneratorInterface(): OpenApiTagGeneratorInterface
     {
         return new OpenApiTagGenerator();
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Renderer\PathMethodRendererInterface
-     */
     public function createPathMethodRenderer(): PathMethodRendererInterface
     {
         return new PathMethodRenderer(
@@ -351,9 +304,6 @@ class DocumentationGeneratorRestApiTestFactory extends Unit
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Renderer\SchemaRendererInterface
-     */
     public function createSchemaRenderer(): SchemaRendererInterface
     {
         return new SchemaRenderer(
@@ -363,9 +313,6 @@ class DocumentationGeneratorRestApiTestFactory extends Unit
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Processor\ResourceRelationshipProcessorInterface
-     */
     public function createResourceRelationshipProcessor(): ResourceRelationshipProcessorInterface
     {
         return new ResourceRelationshipProcessor(
@@ -376,9 +323,6 @@ class DocumentationGeneratorRestApiTestFactory extends Unit
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Analyzer\ResourceRelationshipsPluginAnnotationAnalyzerInterface
-     */
     public function createResourceRelationshipProcessorsPluginAnnotationAnalyzer(): ResourceRelationshipsPluginAnnotationAnalyzerInterface
     {
         return new ResourceRelationshipsPluginAnnotationAnalyzer(
@@ -386,105 +330,66 @@ class DocumentationGeneratorRestApiTestFactory extends Unit
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Renderer\SecuritySchemeRendererInterface
-     */
     public function createSecuritySchemeRenderer(): SecuritySchemeRendererInterface
     {
         return new SecuritySchemeRenderer($this->createSecuritySchemeSpecificationComponent());
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Renderer\ParameterRendererInterface
-     */
     public function createParameterRenderer(): ParameterRendererInterface
     {
         return new ParameterRenderer($this->createParameterSpecificationComponent());
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Renderer\Component\PathMethodSpecificationComponentInterface
-     */
     public function createPathMethodSpecificationComponent(): PathMethodSpecificationComponentInterface
     {
         return new PathMethodSpecificationComponent();
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Renderer\Component\PathParameterSpecificationComponentInterface
-     */
     public function createPathParameterSpecificationComponent(): PathParameterSpecificationComponentInterface
     {
         return new PathParameterSpecificationComponent();
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Renderer\Component\PathRequestSpecificationComponentInterface
-     */
     public function createPathRequestSpecificationComponent(): PathRequestSpecificationComponentInterface
     {
         return new PathRequestSpecificationComponent();
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Renderer\Component\PathResponseSpecificationComponentInterface
-     */
     public function createPathResponseSpecificationComponent(): PathResponseSpecificationComponentInterface
     {
         return new PathResponseSpecificationComponent();
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Renderer\Component\SchemaPropertySpecificationComponentInterface
-     */
     public function createSchemaPropertySpecificationComponent(): SchemaPropertySpecificationComponentInterface
     {
         return new SchemaPropertySpecificationComponent();
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Renderer\Component\SchemaItemsSpecificationComponentInterface
-     */
     public function createSchemaItemsSpecificationComponent(): SchemaItemsSpecificationComponentInterface
     {
         return new SchemaItemsSpecificationComponent();
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Renderer\Component\SchemaSpecificationComponentInterface
-     */
     public function createSchemaSpecificationComponent(): SchemaSpecificationComponentInterface
     {
         return new SchemaSpecificationComponent();
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Renderer\Component\SecuritySchemeSpecificationComponentInterface
-     */
     public function createSecuritySchemeSpecificationComponent(): SecuritySchemeSpecificationComponentInterface
     {
         return new SecuritySchemeSpecificationComponent();
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Renderer\Component\ParameterSpecificationComponentInterface
-     */
     public function createParameterSpecificationComponent(): ParameterSpecificationComponentInterface
     {
         return new ParameterSpecificationComponent();
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Builder\SchemaBuilderInterface
-     */
     public function createOpenApiSpecificationSchemaBuilder(): SchemaBuilderInterface
     {
         return new OpenApiSpecificationSchemaBuilder($this->createOpenApiSpecificationSchemaComponentBuilder());
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Builder\SchemaComponentBuilderInterface
-     */
     public function createOpenApiSpecificationSchemaComponentBuilder(): SchemaComponentBuilderInterface
     {
         return new OpenApiSpecificationSchemaComponentBuilder(
@@ -493,75 +398,46 @@ class DocumentationGeneratorRestApiTestFactory extends Unit
         );
     }
 
-    /**
-     * @param string $controller
-     *
-     * @return \SplFileInfo
-     */
     public function createControllerFileInfo(string $controller): SplFileInfo
     {
         return new SplFileInfo($controller);
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Dependency\Service\DocumentationGeneratorRestApiToUtilEncodingServiceInterface
-     */
     public function createUtilEncodingService(): DocumentationGeneratorRestApiToUtilEncodingServiceInterface
     {
         return new DocumentationGeneratorRestApiToUtilEncodingServiceBridge(new UtilEncodingService());
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Dependency\External\DocumentationGeneratorRestApiToFinderInterface
-     */
     public function createFinder(): DocumentationGeneratorRestApiToFinderInterface
     {
         return new DocumentationGeneratorRestApiToSymfonyFinderAdapter();
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Dependency\External\DocumentationGeneratorRestApiToTextInflectorInterface
-     */
     public function createInflector(): DocumentationGeneratorRestApiToTextInflectorInterface
     {
         return new DocumentationGeneratorRestApiToDoctrineInflectorAdapter();
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Storage\ResourceSchemaNameStorageInterface
-     */
     public function createResourceSchemaNameStorage(): ResourceSchemaNameStorageInterface
     {
         return new ResourceSchemaNameStorage();
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Storage\ResourceTransferClassNameStorageInterface
-     */
     public function createResourceTransferClassNameStorage(): ResourceTransferClassNameStorageInterface
     {
         return new ResourceTransferClassNameStorage();
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Dependency\External\DocumentationGeneratorRestApiToYamlDumperInterface
-     */
     public function createYamlDumper(): DocumentationGeneratorRestApiToYamlDumperInterface
     {
         return new DocumentationGeneratorRestApiToSymfonyYamlAdapter();
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Dependency\External\DocumentationGeneratorRestApiToFilesystemInterface
-     */
     public function createFilesystem(): DocumentationGeneratorRestApiToFilesystemInterface
     {
         return new DocumentationGeneratorRestApiToSymfonyFilesystemAdapter();
     }
 
-    /**
-     * @return \SprykerTest\Zed\DocumentationGeneratorRestApi\Business\Stub\ConfigWithEnabledRelationshipNesting
-     */
     public function createConfig(): ConfigWithEnabledRelationshipNesting
     {
         return new ConfigWithEnabledRelationshipNesting();

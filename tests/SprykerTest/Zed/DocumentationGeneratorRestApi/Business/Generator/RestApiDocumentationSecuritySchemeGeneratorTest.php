@@ -33,9 +33,6 @@ class RestApiDocumentationSecuritySchemeGeneratorTest extends Unit
      */
     protected $securitySchemeGenerator;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -43,9 +40,6 @@ class RestApiDocumentationSecuritySchemeGeneratorTest extends Unit
         $this->securitySchemeGenerator = (new DocumentationGeneratorRestApiTestFactory(''))->createOpenApiSpecificationSecuritySchemeGenerator();
     }
 
-    /**
-     * @return void
-     */
     public function testGetSecuritySchemesShouldReturnDefaultSecuritySchemes(): void
     {
         $securitySchemes = $this->securitySchemeGenerator->getSecuritySchemes();

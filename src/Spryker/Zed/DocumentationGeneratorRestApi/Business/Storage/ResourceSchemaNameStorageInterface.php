@@ -9,18 +9,7 @@ namespace Spryker\Zed\DocumentationGeneratorRestApi\Business\Storage;
 
 interface ResourceSchemaNameStorageInterface
 {
-    /**
-     * @param string $resourceType
-     * @param string $responseAttributesSchemaName
-     *
-     * @return void
-     */
     public function addResourceSchemaName(string $resourceType, string $responseAttributesSchemaName): void;
 
-    /**
-     * @param string $resourceType
-     *
-     * @return string
-     */
     public function getResourceSchemaNameByResourceType(string $resourceType): string;
 }

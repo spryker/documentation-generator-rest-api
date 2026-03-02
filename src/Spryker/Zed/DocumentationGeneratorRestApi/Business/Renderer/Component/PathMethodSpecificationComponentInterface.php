@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\PathMethodComponentTransfer;
 
 interface PathMethodSpecificationComponentInterface extends SpecificationComponentInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\PathMethodComponentTransfer $pathMethodComponentTransfer
-     *
-     * @return void
-     */
     public function setPathMethodComponentTransfer(PathMethodComponentTransfer $pathMethodComponentTransfer): void;
 }

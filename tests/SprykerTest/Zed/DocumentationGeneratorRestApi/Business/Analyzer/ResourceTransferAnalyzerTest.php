@@ -83,9 +83,6 @@ class ResourceTransferAnalyzerTest extends Unit
      */
     protected $resourceTransferAnalyzer;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -93,9 +90,6 @@ class ResourceTransferAnalyzerTest extends Unit
         $this->resourceTransferAnalyzer = new ResourceTransferAnalyzer();
     }
 
-    /**
-     * @return void
-     */
     public function testIsTransferValidShouldReturnTrueForValidTransferClassName(): void
     {
         //Act
@@ -105,9 +99,6 @@ class ResourceTransferAnalyzerTest extends Unit
         $this->assertTrue($result);
     }
 
-    /**
-     * @return void
-     */
     public function testIsTransferValidShouldReturnFalseForInvalidTransferClassName(): void
     {
         //Act
@@ -117,9 +108,6 @@ class ResourceTransferAnalyzerTest extends Unit
         $this->assertFalse($result);
     }
 
-    /**
-     * @return void
-     */
     public function testIsTransferValidShouldReturnFalseForEntityTransferClass(): void
     {
         //Act
@@ -129,9 +117,6 @@ class ResourceTransferAnalyzerTest extends Unit
         $this->assertFalse($result);
     }
 
-    /**
-     * @return void
-     */
     public function testGetTransferMetadataShouldReturnArrayWithCorrectTransferMetadata(): void
     {
         //Act
@@ -141,9 +126,6 @@ class ResourceTransferAnalyzerTest extends Unit
         $this->assertArraySubset($this->tester->getTestAttributesTransferMetadataExpectedData(), $metadata);
     }
 
-    /**
-     * @return void
-     */
     public function testCreateRequestSchemaNameFromTransferClassNameShouldGenerateCorrectSchemaName(): void
     {
         //Act
@@ -153,9 +135,6 @@ class ResourceTransferAnalyzerTest extends Unit
         $this->assertSame(static::REQUEST_SCHEMA_NAME, $schemaName);
     }
 
-    /**
-     * @return void
-     */
     public function testCreateRequestDataSchemaNameFromTransferClassNameShouldGenerateCorrectSchemaName(): void
     {
         //Act
@@ -165,9 +144,6 @@ class ResourceTransferAnalyzerTest extends Unit
         $this->assertSame(static::REQUEST_DATA_SCHEMA_NAME, $schemaName);
     }
 
-    /**
-     * @return void
-     */
     public function testCreateRequestAttributesSchemaNameFromTransferClassNameShouldGenerateCorrectSchemaName(): void
     {
         //Act
@@ -177,9 +153,6 @@ class ResourceTransferAnalyzerTest extends Unit
         $this->assertSame(static::REQUEST_ATTRIBUTES_SCHEMA_NAME, $schemaName);
     }
 
-    /**
-     * @return void
-     */
     public function testCreateResponseCollectionSchemaNameFromTransferClassNameShouldGenerateCorrectSchemaName(): void
     {
         //Act
@@ -189,9 +162,6 @@ class ResourceTransferAnalyzerTest extends Unit
         $this->assertSame(static::RESPONSE_COLLECTION_SCHEMA_NAME, $schemaName);
     }
 
-    /**
-     * @return void
-     */
     public function testCreateResponseCollectionDataSchemaNameFromTransferClassNameWillGenerateCorrectSchemaName(): void
     {
         //Act
@@ -201,9 +171,6 @@ class ResourceTransferAnalyzerTest extends Unit
         $this->assertSame(static::RESPONSE_COLLECTION_DATA_SCHEMA_NAME, $schemaName);
     }
 
-    /**
-     * @return void
-     */
     public function testCreateResponseResourceSchemaNameFromTransferClassNameShouldGenerateCorrectSchemaName(): void
     {
         //Act
@@ -213,9 +180,6 @@ class ResourceTransferAnalyzerTest extends Unit
         $this->assertSame(static::RESPONSE_RESOURCE_SCHEMA_NAME, $schemaName);
     }
 
-    /**
-     * @return void
-     */
     public function testCreateResponseResourceDataSchemaNameFromTransferClassNameShouldGenerateCorrectSchemaName(): void
     {
         //Act
@@ -225,9 +189,6 @@ class ResourceTransferAnalyzerTest extends Unit
         $this->assertSame(static::RESPONSE_RESOURCE_DATA_SCHEMA_NAME, $schemaName);
     }
 
-    /**
-     * @return void
-     */
     public function testCreateResponseAttributesSchemaNameFromTransferClassNameShouldGenerateCorrectSchemaName(): void
     {
         //Act
@@ -236,9 +197,6 @@ class ResourceTransferAnalyzerTest extends Unit
         $this->assertSame(static::RESPONSE_ATTRIBUTES_SCHEMA_NAME, $schemaName);
     }
 
-    /**
-     * @return void
-     */
     public function testCreateResourceRelationshipSchemaNameFromTransferClassNameShouldGenerateCorrectSchemaName(): void
     {
         //Act

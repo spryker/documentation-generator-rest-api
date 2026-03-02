@@ -13,43 +13,26 @@ use SprykerTest\Zed\DocumentationGeneratorRestApi\Business\Stub\RestTestAttribut
 
 class TestResourceRouteRelatedPlugin implements ResourceRoutePluginInterface
 {
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRouteCollectionInterface $resourceRouteCollection
-     *
-     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRouteCollectionInterface
-     */
     public function configure(ResourceRouteCollectionInterface $resourceRouteCollection): ResourceRouteCollectionInterface
     {
         return $resourceRouteCollection;
     }
 
-    /**
-     * @return string
-     */
     public function getResourceType(): string
     {
         return 'test-resource-with-relationship';
     }
 
-    /**
-     * @return string
-     */
     public function getController(): string
     {
         return 'test-resource';
     }
 
-    /**
-     * @return string
-     */
     public function getResourceAttributesClassName(): string
     {
         return RestTestAttributesTransfer::class;
     }
 
-    /**
-     * @return string
-     */
     public function getModuleName(): string
     {
         return 'DocumentationGeneratorRestApi';

@@ -22,9 +22,6 @@ class TestThirdWithoutAnnotationNestedResourceRelationshipPlugin implements Reso
     {
     }
 
-    /**
-     * @return string
-     */
     public function getRelationshipResourceType(): string
     {
         return 'test-third-without-annotation-nested-resource';

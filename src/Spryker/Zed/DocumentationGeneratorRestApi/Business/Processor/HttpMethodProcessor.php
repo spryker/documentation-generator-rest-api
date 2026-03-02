@@ -102,14 +102,6 @@ class HttpMethodProcessor implements HttpMethodProcessorInterface
      */
     protected $config;
 
-    /**
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Business\Generator\PathGeneratorInterface $pathGenerator
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Business\Generator\SchemaGeneratorInterface $schemaGenerator
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Business\Generator\SecuritySchemeGeneratorInterface $securitySchemeGenerator
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Business\Generator\OpenApiSpecificationParameterGeneratorInterface $parameterGenerator
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Business\Generator\OpenApiTagGeneratorInterface $tagGenerator
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConfig $config
-     */
     public function __construct(
         PathGeneratorInterface $pathGenerator,
         SchemaGeneratorInterface $schemaGenerator,
@@ -126,55 +118,31 @@ class HttpMethodProcessor implements HttpMethodProcessorInterface
         $this->config = $config;
     }
 
-    /**
-     * @return array
-     */
     public function getGeneratedPaths(): array
     {
         return $this->pathGenerator->getPaths();
     }
 
-    /**
-     * @return array
-     */
     public function getGeneratedSchemas(): array
     {
         return $this->schemaGenerator->getSchemas();
     }
 
-    /**
-     * @return array
-     */
     public function getGeneratedSecuritySchemes(): array
     {
         return $this->securitySchemeGenerator->getSecuritySchemes();
     }
 
-    /**
-     * @return array
-     */
     public function getGeneratedParameters(): array
     {
         return $this->parameterGenerator->getParameters();
     }
 
-    /**
-     * @return array
-     */
     public function getGeneratedTags(): array
     {
         return $this->tagGenerator->getTags();
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     * @param string $resourcePath
-     * @param bool $isProtected
-     * @param string $idResource
-     * @param \Generated\Shared\Transfer\AnnotationTransfer|null $annotationTransfer
-     *
-     * @return void
-     */
     public function addGetResourceByIdPath(
         ResourceRoutePluginInterface $plugin,
         string $resourcePath,
@@ -198,15 +166,6 @@ class HttpMethodProcessor implements HttpMethodProcessorInterface
         $this->addGetResourceById($plugin, $pathDataTransfer, $idResource, $annotationTransfer);
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     * @param string $resourcePath
-     * @param bool $isProtected
-     * @param string $idResource
-     * @param \Generated\Shared\Transfer\AnnotationTransfer|null $annotationTransfer
-     *
-     * @return void
-     */
     public function addGetResourceCollectionPath(
         ResourceRoutePluginInterface $plugin,
         string $resourcePath,
@@ -231,14 +190,6 @@ class HttpMethodProcessor implements HttpMethodProcessorInterface
         $this->addGetCollectionPath($plugin, $pathDataTransfer, $annotationTransfer);
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     * @param string $resourcePath
-     * @param bool $isProtected
-     * @param \Generated\Shared\Transfer\AnnotationTransfer|null $annotationTransfer
-     *
-     * @return void
-     */
     public function addPostResourcePath(
         ResourceRoutePluginInterface $plugin,
         string $resourcePath,
@@ -271,14 +222,6 @@ class HttpMethodProcessor implements HttpMethodProcessorInterface
         $this->pathGenerator->addPostPath($pathDataTransfer, $requestSchema, $errorSchema, $responseSchema);
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     * @param string $resourcePath
-     * @param bool $isProtected
-     * @param \Generated\Shared\Transfer\AnnotationTransfer|null $annotationTransfer
-     *
-     * @return void
-     */
     public function addPatchResourcePath(
         ResourceRoutePluginInterface $plugin,
         string $resourcePath,
@@ -311,14 +254,6 @@ class HttpMethodProcessor implements HttpMethodProcessorInterface
         $this->pathGenerator->addPatchPath($pathDataTransfer, $requestSchema, $errorSchema, $responseSchema);
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     * @param string $resourcePath
-     * @param bool $isProtected
-     * @param \Generated\Shared\Transfer\AnnotationTransfer|null $annotationTransfer
-     *
-     * @return void
-     */
     public function addDeleteResourcePath(
         ResourceRoutePluginInterface $plugin,
         string $resourcePath,
@@ -349,13 +284,6 @@ class HttpMethodProcessor implements HttpMethodProcessorInterface
         $this->pathGenerator->addDeletePath($pathDataTransfer, $errorSchema);
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     * @param \Generated\Shared\Transfer\PathMethodDataTransfer $pathMethodDataTransfer
-     * @param \Generated\Shared\Transfer\AnnotationTransfer|null $annotationTransfer
-     *
-     * @return void
-     */
     protected function addGetCollectionPath(
         ResourceRoutePluginInterface $plugin,
         PathMethodDataTransfer $pathMethodDataTransfer,
@@ -374,14 +302,6 @@ class HttpMethodProcessor implements HttpMethodProcessorInterface
         $this->pathGenerator->addGetPath($pathMethodDataTransfer, $errorSchema, $responseSchema);
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     * @param \Generated\Shared\Transfer\PathMethodDataTransfer $pathMethodDataTransfer
-     * @param string $idResource
-     * @param \Generated\Shared\Transfer\AnnotationTransfer|null $annotationTransfer
-     *
-     * @return void
-     */
     protected function addGetResourceById(
         ResourceRoutePluginInterface $plugin,
         PathMethodDataTransfer $pathMethodDataTransfer,
@@ -403,16 +323,6 @@ class HttpMethodProcessor implements HttpMethodProcessorInterface
         $this->pathGenerator->addGetPath($pathMethodDataTransfer, $errorSchema, $responseSchema);
     }
 
-    /**
-     * @param string $resource
-     * @param string $path
-     * @param bool $isProtected
-     * @param \Generated\Shared\Transfer\PathSchemaDataTransfer $errorSchema
-     * @param \Generated\Shared\Transfer\AnnotationTransfer|null $annotationTransfer
-     * @param string $operationId
-     *
-     * @return \Generated\Shared\Transfer\PathMethodDataTransfer
-     */
     protected function createPathDataTransfer(
         string $resource,
         string $path,
@@ -436,11 +346,6 @@ class HttpMethodProcessor implements HttpMethodProcessorInterface
         return $pathDataTransfer;
     }
 
-    /**
-     * @param string $schemaRef
-     *
-     * @return \Generated\Shared\Transfer\PathSchemaDataTransfer
-     */
     protected function createPathSchemaDataTransfer(string $schemaRef): PathSchemaDataTransfer
     {
         $schemaDataTransfer = new PathSchemaDataTransfer();
@@ -460,12 +365,6 @@ class HttpMethodProcessor implements HttpMethodProcessorInterface
         return [sprintf($pattern, str_replace('-', ' ', $resourceType))];
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     * @param \Generated\Shared\Transfer\AnnotationTransfer|null $annotationTransfer
-     *
-     * @return \Generated\Shared\Transfer\PathSchemaDataTransfer|null
-     */
     protected function findResponseResourceSchema(
         ResourceRoutePluginInterface $plugin,
         ?AnnotationTransfer $annotationTransfer
@@ -483,12 +382,6 @@ class HttpMethodProcessor implements HttpMethodProcessorInterface
         );
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     * @param \Generated\Shared\Transfer\AnnotationTransfer|null $annotationTransfer
-     *
-     * @return \Generated\Shared\Transfer\PathSchemaDataTransfer|null
-     */
     protected function findResponseCollectionSchema(
         ResourceRoutePluginInterface $plugin,
         ?AnnotationTransfer $annotationTransfer
@@ -506,13 +399,6 @@ class HttpMethodProcessor implements HttpMethodProcessorInterface
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PathMethodDataTransfer $pathMethodDataTransfer
-     * @param \Generated\Shared\Transfer\PathSchemaDataTransfer $errorSchemaDataTransfer
-     * @param array $responses
-     *
-     * @return void
-     */
     protected function addResponsesToPathData(
         PathMethodDataTransfer $pathMethodDataTransfer,
         PathSchemaDataTransfer $errorSchemaDataTransfer,
@@ -530,42 +416,21 @@ class HttpMethodProcessor implements HttpMethodProcessorInterface
         }
     }
 
-    /**
-     * @param int $responseCode
-     *
-     * @return bool
-     */
     protected function isResponseCodeSuccessful(int $responseCode): bool
     {
         return $responseCode >= 200 && $responseCode < 300;
     }
 
-    /**
-     * @param string $pattern
-     * @param string $resourceType
-     *
-     * @return string
-     */
     protected function getOperationId(string $pattern, string $resourceType): string
     {
         return sprintf($pattern, $resourceType);
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     *
-     * @return string
-     */
     protected function getParentResourceType(ResourceRoutePluginInterface $plugin): string
     {
         return $plugin instanceof ResourceWithParentPluginInterface ? $plugin->getParentResourceType() : '';
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     *
-     * @return string
-     */
     protected function getFullResource(ResourceRoutePluginInterface $plugin): string
     {
         $parentResourceType = $this->getParentResourceType($plugin);

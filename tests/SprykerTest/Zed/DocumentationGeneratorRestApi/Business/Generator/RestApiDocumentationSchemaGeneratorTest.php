@@ -122,9 +122,6 @@ class RestApiDocumentationSchemaGeneratorTest extends Unit
      */
     protected $schemaGenerator;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -132,9 +129,6 @@ class RestApiDocumentationSchemaGeneratorTest extends Unit
         $this->schemaGenerator = (new DocumentationGeneratorRestApiTestFactory(''))->createOpenApiSpecificationSchemaGenerator();
     }
 
-    /**
-     * @return void
-     */
     public function testGetRestErrorSchemaDataShouldReturnErrorSchemaReference(): void
     {
         $errorSchemaRef = $this->schemaGenerator->getRestErrorSchemaData();
@@ -142,9 +136,6 @@ class RestApiDocumentationSchemaGeneratorTest extends Unit
         $this->assertSame(static::SCHEMA_REF_REST_ERROR_MESSAGE, $errorSchemaRef);
     }
 
-    /**
-     * @return void
-     */
     public function testGetSchemasShouldReturnDefaultSchemas(): void
     {
         $schemas = $this->schemaGenerator->getSchemas();
@@ -158,9 +149,6 @@ class RestApiDocumentationSchemaGeneratorTest extends Unit
         $this->assertArraySubset($this->tester->getSchemaGeneratorRestRelationships(), $schemas);
     }
 
-    /**
-     * @return void
-     */
     public function testAddRequestSchemaForPluginShouldGenerateValidRequestSchemas(): void
     {
         $this->schemaGenerator->addRequestSchemaForPlugin(new TestResourceRoutePlugin());
@@ -175,9 +163,6 @@ class RestApiDocumentationSchemaGeneratorTest extends Unit
         $this->assertArraySubset($this->tester->getSchemaGeneratorTestRequestAttributesSchema(), $schemas);
     }
 
-    /**
-     * @return void
-     */
     public function testAddResponseCollectionSchemaForPluginShouldGenerateValidResponseCollectionSchemas(): void
     {
         $this->schemaGenerator->addResponseCollectionSchemaForPlugin(new TestResourceRoutePlugin());
@@ -192,9 +177,6 @@ class RestApiDocumentationSchemaGeneratorTest extends Unit
         $this->assertArraySubset($this->tester->getSchemaGeneratorTestResponseAttributesSchema(), $schemas);
     }
 
-    /**
-     * @return void
-     */
     public function testAddResponseResourceSchemaForPluginShouldGenerateValidResponseResourceSchemas(): void
     {
         $this->schemaGenerator->addResponseResourceSchemaForPlugin(new TestResourceRoutePlugin());
@@ -209,9 +191,6 @@ class RestApiDocumentationSchemaGeneratorTest extends Unit
         $this->assertArraySubset($this->tester->getSchemaGeneratorTestResponseAttributesSchema(), $schemas);
     }
 
-    /**
-     * @return void
-     */
     public function testAddResponseResourceSchemaForPluginWithAlternativeTransferNameShouldGenerateValidResponseResourceSchemas(): void
     {
         $this->schemaGenerator->addResponseResourceSchemaForPlugin(
@@ -231,9 +210,6 @@ class RestApiDocumentationSchemaGeneratorTest extends Unit
         $this->assertArraySubset($this->tester->getSchemaGeneratorTestRelationshipsSchemaForAlternativeTransfer(), $schemas);
     }
 
-    /**
-     * @return void
-     */
     public function testAddRequestSchemaForPluginShouldThrowExceptionIfPluginWithInvalidResourceAttributesClassNameIsPassed(): void
     {
         $plugin = $this->getResourceRoutePluginWithInvalidResourceAttributesClassName();
@@ -242,9 +218,6 @@ class RestApiDocumentationSchemaGeneratorTest extends Unit
         $this->schemaGenerator->addRequestSchemaForPlugin($plugin);
     }
 
-    /**
-     * @return void
-     */
     public function testAddResponseCollectionForPluginShouldThrowExceptionIfPluginWithInvalidResourceAttributesClassNameIsPassed(): void
     {
         $plugin = $this->getResourceRoutePluginWithInvalidResourceAttributesClassName();
@@ -253,9 +226,6 @@ class RestApiDocumentationSchemaGeneratorTest extends Unit
         $this->schemaGenerator->addResponseCollectionSchemaForPlugin($plugin);
     }
 
-    /**
-     * @return void
-     */
     public function testAddResponseResourceForPluginShouldThrowExceptionIfPluginWithInvalidResourceAttributesClassNameIsPassed(): void
     {
         $plugin = $this->getResourceRoutePluginWithInvalidResourceAttributesClassName();
@@ -264,9 +234,6 @@ class RestApiDocumentationSchemaGeneratorTest extends Unit
         $this->schemaGenerator->addResponseResourceSchemaForPlugin($plugin);
     }
 
-    /**
-     * @return void
-     */
     public function testAddResponseCollectionSchemaForPluginWithNullablePropertiesInTransferShouldGenerateValidResponseResourceSchemas(): void
     {
         $this->schemaGenerator->addResponseResourceSchemaForPlugin(
@@ -278,9 +245,6 @@ class RestApiDocumentationSchemaGeneratorTest extends Unit
         $this->assertArraySubset($this->tester->getSchemaGeneratorTestResponseAttributesSchemaForTransferWithNullableParameters(), $schemas);
     }
 
-    /**
-     * @return void
-     */
     public function testAddResponseCollectionSchemaForPluginWithNullableIdInAnnotationTransferShouldGenerateValidResponseResourceSchemas(): void
     {
         $this->schemaGenerator->addResponseResourceSchemaForPlugin(

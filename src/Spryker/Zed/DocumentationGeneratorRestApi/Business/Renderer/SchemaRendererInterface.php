@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\SchemaDataTransfer;
 
 interface SchemaRendererInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\SchemaDataTransfer $schemaDataTransfer
-     *
-     * @return array
-     */
     public function render(SchemaDataTransfer $schemaDataTransfer): array;
 }

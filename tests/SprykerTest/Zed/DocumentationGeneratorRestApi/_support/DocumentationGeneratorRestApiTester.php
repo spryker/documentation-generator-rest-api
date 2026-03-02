@@ -373,9 +373,6 @@ class DocumentationGeneratorRestApiTester extends Actor
      */
     protected const SCHEMA_NAME_REST_TEST_ATTRIBUTES_WITH_NULLABLE_PROPERTY_TRANSFER = 'RestTestAttributesWithNullablePropertyTransfer';
 
-    /**
-     * @return array
-     */
     public function getTestAttributesTransferMetadataExpectedData(): array
     {
         return [
@@ -396,17 +393,11 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getRestApiDocumentationFromPluginsExpectedResult(): array
     {
         return json_decode(file_get_contents(__DIR__ . '/../Business/Fixtures/glue_annotation_analyzer_expected_result.json'), true);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\PathMethodDataTransfer
-     */
     public function getPathMethodDataTransferForGetMethod(): PathMethodDataTransfer
     {
         return (new PathMethodDataTransfer())
@@ -420,9 +411,6 @@ class DocumentationGeneratorRestApiTester extends Actor
             ->addResponseSchema($this->getBadRequestResponseSchema());
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\PathMethodDataTransfer
-     */
     public function getPathMethodDataTransferForPostMethod(): PathMethodDataTransfer
     {
         return (new PathMethodDataTransfer())
@@ -434,9 +422,6 @@ class DocumentationGeneratorRestApiTester extends Actor
             ->addParameter($this->getAcceptLanguageHeaderPathParameterComponent());
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\PathMethodDataTransfer
-     */
     public function getPathMethodDataTransferForPatchMethod(): PathMethodDataTransfer
     {
         return (new PathMethodDataTransfer())
@@ -448,9 +433,6 @@ class DocumentationGeneratorRestApiTester extends Actor
             ->addParameter($this->getAcceptLanguageHeaderPathParameterComponent());
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\PathMethodDataTransfer
-     */
     public function getPathMethodDataTransferForDeleteMethod(): PathMethodDataTransfer
     {
         return (new PathMethodDataTransfer())
@@ -461,18 +443,12 @@ class DocumentationGeneratorRestApiTester extends Actor
             ->setIsProtected(false);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\PathSchemaDataTransfer
-     */
     public function getRequestSchemaDataTransfer(): PathSchemaDataTransfer
     {
         return (new PathSchemaDataTransfer())
             ->setSchemaReference(static::SCHEMA_REF_REST_REQUEST);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\PathSchemaDataTransfer
-     */
     public function getErrorSchemaDataTransfer(): PathSchemaDataTransfer
     {
         return (new PathSchemaDataTransfer())
@@ -481,12 +457,6 @@ class DocumentationGeneratorRestApiTester extends Actor
             ->setSchemaReference(static::SCHEMA_REF_REST_ERROR_MESSAGE);
     }
 
-    /**
-     * @param int $code
-     * @param string|null $description
-     *
-     * @return \Generated\Shared\Transfer\PathSchemaDataTransfer
-     */
     public function getResponseSchemaDataTransfer(int $code, ?string $description = null): PathSchemaDataTransfer
     {
         return (new PathSchemaDataTransfer())
@@ -495,9 +465,6 @@ class DocumentationGeneratorRestApiTester extends Actor
             ->setSchemaReference(static::SCHEMA_REF_REST_RESPONSE);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\PathSchemaDataTransfer
-     */
     public function getNotFoundResponseSchema(): PathSchemaDataTransfer
     {
         return (new PathSchemaDataTransfer())
@@ -506,9 +473,6 @@ class DocumentationGeneratorRestApiTester extends Actor
             ->setSchemaReference(static::SCHEMA_REF_REST_ERROR_MESSAGE);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\PathSchemaDataTransfer
-     */
     public function getBadRequestResponseSchema(): PathSchemaDataTransfer
     {
         return (new PathSchemaDataTransfer())
@@ -517,9 +481,6 @@ class DocumentationGeneratorRestApiTester extends Actor
             ->setSchemaReference(static::SCHEMA_REF_REST_ERROR_MESSAGE);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\PathParameterComponentTransfer
-     */
     public function getAcceptLanguageHeaderPathParameterComponent(): PathParameterComponentTransfer
     {
         return (new PathParameterComponentTransfer())
@@ -527,12 +488,6 @@ class DocumentationGeneratorRestApiTester extends Actor
             ->setIn(static::PARAMETER_IN_HEADER);
     }
 
-    /**
-     * @param int|null $code
-     * @param string|null $description
-     *
-     * @return array
-     */
     public function getPathGeneratorExpectedGetPathData(?int $code = null, ?string $description = null): array
     {
         return [
@@ -597,12 +552,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @param int|null $code
-     * @param string|null $description
-     *
-     * @return array
-     */
     public function getPathGeneratorExpectedPostPathData(?int $code = null, ?string $description = null): array
     {
         return [
@@ -647,12 +596,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @param int|null $code
-     * @param string|null $description
-     *
-     * @return array
-     */
     public function getPathGeneratorExpectedPatchPathData(?int $code = null, ?string $description = null): array
     {
         return [
@@ -705,12 +648,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @param int|null $code
-     * @param string|null $description
-     *
-     * @return array
-     */
     public function getPathGeneratorExpectedDeletePathData(?int $code = null, ?string $description = null): array
     {
         return [
@@ -748,9 +685,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getSchemaGeneratorErrorSchema(): array
     {
         return [
@@ -770,9 +704,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getSchemaGeneratorRestLinksSchema(): array
     {
         return [
@@ -786,9 +717,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getSchemaGeneratorRestRelationships(): array
     {
         return [
@@ -805,9 +733,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getSchemaGeneratorTestRequestSchema(): array
     {
         return [
@@ -821,9 +746,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getTestRequestDataSchema(): array
     {
         return [
@@ -840,9 +762,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getSchemaGeneratorTestRequestAttributesSchema(): array
     {
         return [
@@ -859,9 +778,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getTestResponseCollectionSchema(): array
     {
         return [
@@ -877,9 +793,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getSchemaGeneratorTestResponseCollectionDataSchema(): array
     {
         return [
@@ -905,9 +818,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getSchemaGeneratorTestResponseResourceSchema(): array
     {
         return [
@@ -924,9 +834,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getSchemaGeneratorTestResponseResourceDataSchema(): array
     {
         return [
@@ -952,9 +859,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getSchemaGeneratorTestResponseAttributesSchema(): array
     {
         return [
@@ -971,9 +875,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getTestResponseResourceSchemaForAlternativeTransfer(): array
     {
         return [
@@ -990,9 +891,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getSchemaGeneratorTestResponseResourceDataSchemaForAlternativeTransfer(): array
     {
         return [
@@ -1018,9 +916,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getSchemaGeneratorTestResponseAttributesSchemaForAlternativeTransfer(): array
     {
         return [
@@ -1037,9 +932,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getSchemaGeneratorTestRelationshipsSchemaForAlternativeTransfer(): array
     {
         return [
@@ -1053,9 +945,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getSchemaGeneratorTestResponseAttributesSchemaForTransferWithNullableParameters(): array
     {
         return [
@@ -1073,9 +962,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getSchemaGeneratorTestResponseDataSchemaWithNullableId(): array
     {
         return [
@@ -1102,9 +988,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getMethodProcessorGetResourcePathWithoutAnnotationsExpectedData(): array
     {
         return [
@@ -1141,9 +1024,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getMethodProcessorGetResourcePathWithAnnotationsExpectedData(): array
     {
         return [
@@ -1210,9 +1090,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getMethodProcessorGetResourceCollectionWithoutAnnotationsExpectedData(): array
     {
         return [
@@ -1249,9 +1126,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getMethodProcessorGetResourceCollectionPathWithAnnotationsWithEmptyResponseExpectedData(): array
     {
         return [
@@ -1281,9 +1155,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getMethodProcessorGetResourceCollectionPathWithAnnotationsExpectedData(): array
     {
         return [
@@ -1313,9 +1184,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getMethodProcessorDeleteResourcePathExpectedData(): array
     {
         return [
@@ -1345,9 +1213,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getMethodProcessorPatchResourcePathExpectedData(): array
     {
         return [
@@ -1398,9 +1263,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getMethodProcessorPostResourcePathExpectedData(): array
     {
         return [
@@ -1448,9 +1310,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getMethodProcessorPostResourcePathWithAnnotationsWithEmptyResponseExpectedData(): array
     {
         return [
@@ -1491,9 +1350,6 @@ class DocumentationGeneratorRestApiTester extends Actor
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getMethodProcessorGetResourceByIdPathExpectedData(): array
     {
         return [

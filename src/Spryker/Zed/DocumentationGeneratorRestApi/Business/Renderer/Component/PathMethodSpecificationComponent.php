@@ -26,19 +26,11 @@ class PathMethodSpecificationComponent implements PathMethodSpecificationCompone
      */
     protected $pathMethodComponentTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\PathMethodComponentTransfer $pathMethodComponentTransfer
-     *
-     * @return void
-     */
     public function setPathMethodComponentTransfer(PathMethodComponentTransfer $pathMethodComponentTransfer): void
     {
         $this->pathMethodComponentTransfer = $pathMethodComponentTransfer;
     }
 
-    /**
-     * @return array
-     */
     public function getSpecificationComponentData(): array
     {
         if (!$this->validatePathMethodComponentTransfer()) {
@@ -72,9 +64,6 @@ class PathMethodSpecificationComponent implements PathMethodSpecificationCompone
         return [$this->pathMethodComponentTransfer->getMethod() => $pathData];
     }
 
-    /**
-     * @return bool
-     */
     protected function validatePathMethodComponentTransfer(): bool
     {
         if (!$this->pathMethodComponentTransfer) {

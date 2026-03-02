@@ -41,19 +41,11 @@ class PathRequestSpecificationComponent implements PathRequestSpecificationCompo
      */
     protected $pathRequestComponentTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\PathRequestComponentTransfer $pathRequestComponentTransfer
-     *
-     * @return void
-     */
     public function setPathRequestComponentTransfer(PathRequestComponentTransfer $pathRequestComponentTransfer): void
     {
         $this->pathRequestComponentTransfer = $pathRequestComponentTransfer;
     }
 
-    /**
-     * @return array
-     */
     public function getSpecificationComponentData(): array
     {
         $result = [];
@@ -70,9 +62,6 @@ class PathRequestSpecificationComponent implements PathRequestSpecificationCompo
         return $result;
     }
 
-    /**
-     * @return bool
-     */
     protected function validatePathRequestComponentTransfer(): bool
     {
         if (!$this->pathRequestComponentTransfer) {

@@ -12,40 +12,16 @@ use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginI
 
 interface HttpMethodProcessorInterface
 {
-    /**
-     * @return array
-     */
     public function getGeneratedPaths(): array;
 
-    /**
-     * @return array
-     */
     public function getGeneratedSchemas(): array;
 
-    /**
-     * @return array
-     */
     public function getGeneratedSecuritySchemes(): array;
 
-    /**
-     * @return array
-     */
     public function getGeneratedParameters(): array;
 
-    /**
-     * @return array
-     */
     public function getGeneratedTags(): array;
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     * @param string $resourcePath
-     * @param bool $isProtected
-     * @param string $idResource
-     * @param \Generated\Shared\Transfer\AnnotationTransfer|null $annotationTransfer
-     *
-     * @return void
-     */
     public function addGetResourceByIdPath(
         ResourceRoutePluginInterface $plugin,
         string $resourcePath,
@@ -54,15 +30,6 @@ interface HttpMethodProcessorInterface
         ?AnnotationTransfer $annotationTransfer
     ): void;
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     * @param string $resourcePath
-     * @param bool $isProtected
-     * @param string $idResource
-     * @param \Generated\Shared\Transfer\AnnotationTransfer|null $annotationTransfer
-     *
-     * @return void
-     */
     public function addGetResourceCollectionPath(
         ResourceRoutePluginInterface $plugin,
         string $resourcePath,
@@ -71,14 +38,6 @@ interface HttpMethodProcessorInterface
         ?AnnotationTransfer $annotationTransfer
     ): void;
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     * @param string $resourcePath
-     * @param bool $isProtected
-     * @param \Generated\Shared\Transfer\AnnotationTransfer|null $annotationTransfer
-     *
-     * @return void
-     */
     public function addPostResourcePath(
         ResourceRoutePluginInterface $plugin,
         string $resourcePath,
@@ -86,14 +45,6 @@ interface HttpMethodProcessorInterface
         ?AnnotationTransfer $annotationTransfer
     ): void;
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     * @param string $resourcePath
-     * @param bool $isProtected
-     * @param \Generated\Shared\Transfer\AnnotationTransfer|null $annotationTransfer
-     *
-     * @return void
-     */
     public function addPatchResourcePath(
         ResourceRoutePluginInterface $plugin,
         string $resourcePath,
@@ -101,14 +52,6 @@ interface HttpMethodProcessorInterface
         ?AnnotationTransfer $annotationTransfer
     ): void;
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     * @param string $resourcePath
-     * @param bool $isProtected
-     * @param \Generated\Shared\Transfer\AnnotationTransfer|null $annotationTransfer
-     *
-     * @return void
-     */
     public function addDeleteResourcePath(
         ResourceRoutePluginInterface $plugin,
         string $resourcePath,

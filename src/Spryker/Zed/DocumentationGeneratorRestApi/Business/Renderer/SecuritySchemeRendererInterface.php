@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\SecuritySchemeTransfer;
 
 interface SecuritySchemeRendererInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\SecuritySchemeTransfer $securitySchemeTransfer
-     *
-     * @return array
-     */
     public function render(SecuritySchemeTransfer $securitySchemeTransfer): array;
 }

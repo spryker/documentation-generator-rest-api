@@ -9,8 +9,5 @@ namespace Spryker\Zed\DocumentationGeneratorRestApi\Business\Generator;
 
 interface DocumentationGeneratorInterface
 {
-    /**
-     * @return void
-     */
     public function generateDocumentation(): void;
 }

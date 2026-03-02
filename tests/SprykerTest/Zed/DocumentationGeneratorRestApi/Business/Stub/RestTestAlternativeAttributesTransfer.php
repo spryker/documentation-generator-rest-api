@@ -65,9 +65,6 @@ class RestTestAlternativeAttributesTransfer extends AbstractTransfer
         ],
     ];
 
-    /**
-     * @return string|null
-     */
     public function getAttribute3(): ?string
     {
         return $this->attribute3;
@@ -86,9 +83,6 @@ class RestTestAlternativeAttributesTransfer extends AbstractTransfer
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getAttribute4(): ?string
     {
         return $this->attribute4;

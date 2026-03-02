@@ -9,8 +9,5 @@ namespace Spryker\Zed\DocumentationGeneratorRestApi\Business\Renderer\Component;
 
 interface SpecificationComponentInterface
 {
-    /**
-     * @return array
-     */
     public function getSpecificationComponentData(): array;
 }

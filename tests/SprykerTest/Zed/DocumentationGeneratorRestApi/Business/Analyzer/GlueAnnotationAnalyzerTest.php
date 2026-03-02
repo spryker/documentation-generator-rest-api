@@ -98,9 +98,6 @@ class GlueAnnotationAnalyzerTest extends Unit
      */
     protected $testFactory;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -108,9 +105,6 @@ class GlueAnnotationAnalyzerTest extends Unit
         $this->testFactory = new DocumentationGeneratorRestApiTestFactory('');
     }
 
-    /**
-     * @return void
-     */
     public function testGetResourceParametersFromPluginWillReturnCorrectParameters(): void
     {
         $glueAnnotationAnalyzer = new GlueAnnotationAnalyzer(
@@ -138,9 +132,6 @@ class GlueAnnotationAnalyzerTest extends Unit
         $this->assertSame(static::VALUE_RESPONSE_BAD_REQUEST, $parameters->getPost()->getResponses()[static::KEY_RESPONSE_BAD_REQUEST]);
     }
 
-    /**
-     * @return void
-     */
     public function testGetResourceParametersFromPluginWillThrowExceptionIfAnnotationsContainsInvalidJson(): void
     {
         $glueAnnotationAnalyzer = new GlueAnnotationAnalyzer(
@@ -152,9 +143,6 @@ class GlueAnnotationAnalyzerTest extends Unit
         $glueAnnotationAnalyzer->getResourceParametersFromPlugin(new TestResourceRoutePlugin());
     }
 
-    /**
-     * @return void
-     */
     public function testGetResourceParametersFromPluginWillReturnWithEmptyPropertiesIfAnnotationsIsNotFoundInController(): void
     {
         $glueAnnotationAnalyzer = new GlueAnnotationAnalyzer(
@@ -171,9 +159,6 @@ class GlueAnnotationAnalyzerTest extends Unit
         $this->assertEmpty($parameters->getDelete());
     }
 
-    /**
-     * @return void
-     */
     public function testGetResourceParametersFromPluginWillReturnObjectWithEmptyPropertiesIfAnnotationsIsAnEmptyObject(): void
     {
         $glueAnnotationAnalyzer = new GlueAnnotationAnalyzer(
@@ -190,9 +175,6 @@ class GlueAnnotationAnalyzerTest extends Unit
         $this->assertEmpty($parameters->getDelete());
     }
 
-    /**
-     * @return void
-     */
     public function testGetResourceParametersFromPluginWithNullableIdWillReturnCorrectParameters(): void
     {
         $glueAnnotationAnalyzer = new GlueAnnotationAnalyzer(
@@ -215,9 +197,6 @@ class GlueAnnotationAnalyzerTest extends Unit
         return $this->testFactory->createGlueControllerFinderMock($controller);
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Dependency\Service\DocumentationGeneratorRestApiToUtilEncodingServiceInterface
-     */
     protected function getUtilEncodingService(): DocumentationGeneratorRestApiToUtilEncodingServiceInterface
     {
         return $this->testFactory->createUtilEncodingService();

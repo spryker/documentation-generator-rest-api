@@ -65,9 +65,6 @@ class RestTestThirdNestedResourceRelationshipAttributesTransfer extends Abstract
         ],
     ];
 
-    /**
-     * @return string|null
-     */
     public function getAttribute5(): ?string
     {
         return $this->attribute5;
@@ -86,9 +83,6 @@ class RestTestThirdNestedResourceRelationshipAttributesTransfer extends Abstract
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getAttribute6(): ?string
     {
         return $this->attribute6;

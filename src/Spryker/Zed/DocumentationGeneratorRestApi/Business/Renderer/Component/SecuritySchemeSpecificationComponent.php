@@ -21,19 +21,11 @@ class SecuritySchemeSpecificationComponent implements SecuritySchemeSpecificatio
      */
     protected $securitySchemeComponentTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\SecuritySchemeComponentTransfer $securitySchemeComponentTransfer
-     *
-     * @return void
-     */
     public function setSecuritySchemeComponentTransfer(SecuritySchemeComponentTransfer $securitySchemeComponentTransfer): void
     {
         $this->securitySchemeComponentTransfer = $securitySchemeComponentTransfer;
     }
 
-    /**
-     * @return array
-     */
     public function getSpecificationComponentData(): array
     {
         if (!$this->validateSecuritySchemeComponentTransfer()) {
@@ -47,9 +39,6 @@ class SecuritySchemeSpecificationComponent implements SecuritySchemeSpecificatio
         return $securitySchemaData;
     }
 
-    /**
-     * @return bool
-     */
     protected function validateSecuritySchemeComponentTransfer(): bool
     {
         if (!$this->securitySchemeComponentTransfer) {

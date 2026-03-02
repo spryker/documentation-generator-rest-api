@@ -22,19 +22,12 @@ class DocumentationGenerator implements DocumentationGeneratorInterface
      */
     protected $documentationWriter;
 
-    /**
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Business\Analyzer\ResourcePluginAnalyzerInterface $resourcePluginAnalyzer
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Business\Writer\DocumentationWriterInterface $documentationWriter
-     */
     public function __construct(ResourcePluginAnalyzerInterface $resourcePluginAnalyzer, DocumentationWriterInterface $documentationWriter)
     {
         $this->resourcePluginAnalyzer = $resourcePluginAnalyzer;
         $this->documentationWriter = $documentationWriter;
     }
 
-    /**
-     * @return void
-     */
     public function generateDocumentation(): void
     {
         $this->documentationWriter->write(

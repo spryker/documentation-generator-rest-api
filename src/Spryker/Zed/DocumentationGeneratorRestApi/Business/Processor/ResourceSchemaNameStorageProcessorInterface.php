@@ -11,11 +11,6 @@ use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginI
 
 interface ResourceSchemaNameStorageProcessorInterface
 {
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     *
-     * @return void
-     */
     public function addResourceSchemaNamesToStorage(
         ResourceRoutePluginInterface $plugin
     ): void;

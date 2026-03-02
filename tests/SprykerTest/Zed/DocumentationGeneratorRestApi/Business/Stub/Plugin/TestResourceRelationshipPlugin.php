@@ -12,19 +12,10 @@ use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationship
 
 class TestResourceRelationshipPlugin implements ResourceRelationshipPluginInterface
 {
-    /**
-     * @param array $resources
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     *
-     * @return void
-     */
     public function addResourceRelationships(array $resources, RestRequestInterface $restRequest): void
     {
     }
 
-    /**
-     * @return string
-     */
     public function getRelationshipResourceType(): string
     {
         return 'test-resource-with-relationship';

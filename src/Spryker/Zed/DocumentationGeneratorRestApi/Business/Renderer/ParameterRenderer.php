@@ -18,19 +18,11 @@ class ParameterRenderer implements ParameterRendererInterface
      */
     protected $parameterSpecificationComponent;
 
-    /**
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Business\Renderer\Component\ParameterSpecificationComponentInterface $parameterSpecificationComponent
-     */
     public function __construct(ParameterSpecificationComponentInterface $parameterSpecificationComponent)
     {
         $this->parameterSpecificationComponent = $parameterSpecificationComponent;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ParameterTransfer $parameterTransfer
-     *
-     * @return array
-     */
     public function render(ParameterTransfer $parameterTransfer): array
     {
         $parameterComponentTransfer = new ParameterComponentTransfer();

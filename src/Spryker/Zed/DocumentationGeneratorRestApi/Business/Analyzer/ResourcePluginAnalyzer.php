@@ -135,9 +135,6 @@ class ResourcePluginAnalyzer implements ResourcePluginAnalyzerInterface
         $this->config = $config;
     }
 
-    /**
-     * @return array
-     */
     public function createRestApiDocumentationFromPlugins(): array
     {
         $this->addAllPluginResourceTypesToStorage();
@@ -165,9 +162,6 @@ class ResourcePluginAnalyzer implements ResourcePluginAnalyzerInterface
         ];
     }
 
-    /**
-     * @return void
-     */
     protected function addAllPluginResourceTypesToStorage(): void
     {
         foreach ($this->resourceRoutesPluginsProviderPlugins as $resourceRoutesPluginsProviderPlugin) {
@@ -223,13 +217,6 @@ class ResourcePluginAnalyzer implements ResourcePluginAnalyzerInterface
         $this->processDeleteResourcePath($plugin, $resourcePath, $pathAnnotationsTransfer->getDelete());
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     * @param string $resourcePath
-     * @param \Generated\Shared\Transfer\AnnotationTransfer|null $annotationTransfer
-     *
-     * @return void
-     */
     protected function processGetResourceByIdPath(ResourceRoutePluginInterface $plugin, string $resourcePath, ?AnnotationTransfer $annotationTransfer): void
     {
         if (!$annotationTransfer || !$this->resourceRouteCollection->has(Request::METHOD_GET)) {
@@ -245,13 +232,6 @@ class ResourcePluginAnalyzer implements ResourcePluginAnalyzerInterface
         );
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     * @param string $resourcePath
-     * @param \Generated\Shared\Transfer\AnnotationTransfer|null $annotationTransfer
-     *
-     * @return void
-     */
     protected function processGetResourceCollectionPath(
         ResourceRoutePluginInterface $plugin,
         string $resourcePath,
@@ -270,13 +250,6 @@ class ResourcePluginAnalyzer implements ResourcePluginAnalyzerInterface
         );
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     * @param string $resourcePath
-     * @param \Generated\Shared\Transfer\AnnotationTransfer|null $annotationTransfer
-     *
-     * @return void
-     */
     protected function processPostResourcePath(ResourceRoutePluginInterface $plugin, string $resourcePath, ?AnnotationTransfer $annotationTransfer): void
     {
         if (!$this->resourceRouteCollection->has(Request::METHOD_POST)) {
@@ -291,13 +264,6 @@ class ResourcePluginAnalyzer implements ResourcePluginAnalyzerInterface
         );
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     * @param string $resourcePath
-     * @param \Generated\Shared\Transfer\AnnotationTransfer|null $annotationTransfer
-     *
-     * @return void
-     */
     protected function processPatchResourcePath(ResourceRoutePluginInterface $plugin, string $resourcePath, ?AnnotationTransfer $annotationTransfer): void
     {
         if (!$this->resourceRouteCollection->has(Request::METHOD_PATCH)) {
@@ -312,13 +278,6 @@ class ResourcePluginAnalyzer implements ResourcePluginAnalyzerInterface
         );
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface $plugin
-     * @param string $resourcePath
-     * @param \Generated\Shared\Transfer\AnnotationTransfer|null $annotationTransfer
-     *
-     * @return void
-     */
     protected function processDeleteResourcePath(ResourceRoutePluginInterface $plugin, string $resourcePath, ?AnnotationTransfer $annotationTransfer): void
     {
         if (!$this->resourceRouteCollection->has(Request::METHOD_DELETE)) {
@@ -379,11 +338,6 @@ class ResourcePluginAnalyzer implements ResourcePluginAnalyzerInterface
         return null;
     }
 
-    /**
-     * @param string $resourceType
-     *
-     * @return string
-     */
     protected function getResourceIdFromResourceType(string $resourceType): string
     {
         $resourceTypeExploded = explode('-', $resourceType);

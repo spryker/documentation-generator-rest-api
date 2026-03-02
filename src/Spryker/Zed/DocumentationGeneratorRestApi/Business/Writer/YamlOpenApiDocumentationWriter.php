@@ -139,11 +139,6 @@ class YamlOpenApiDocumentationWriter implements DocumentationWriterInterface
      */
     protected $filesystem;
 
-    /**
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConfig $documentationGeneratorRestApiConfig
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Dependency\External\DocumentationGeneratorRestApiToYamlDumperInterface $yamlDumper
-     * @param \Spryker\Zed\DocumentationGeneratorRestApi\Dependency\External\DocumentationGeneratorRestApiToFilesystemInterface $filesystem
-     */
     public function __construct(
         DocumentationGeneratorRestApiConfig $documentationGeneratorRestApiConfig,
         DocumentationGeneratorRestApiToYamlDumperInterface $yamlDumper,
@@ -181,9 +176,6 @@ class YamlOpenApiDocumentationWriter implements DocumentationWriterInterface
         $this->filesystem->dumpFile($fileName, $yaml);
     }
 
-    /**
-     * @return array
-     */
     protected function getDefaultDataStructure(): array
     {
         return [
@@ -215,9 +207,6 @@ class YamlOpenApiDocumentationWriter implements DocumentationWriterInterface
         ];
     }
 
-    /**
-     * @return string
-     */
     protected function resolveGeneratedFileName(): string
     {
         return $this->documentationGeneratorRestApiConfig->getGeneratedFileOutputDirectory()

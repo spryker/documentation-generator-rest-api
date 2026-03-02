@@ -54,9 +54,6 @@ class RestApiDocumentationSchemaNestedRelationshipGeneratorTest extends Unit
      */
     protected ResourceTransferClassNameStorageInterface $resourceTransferClassNameStorage;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -74,9 +71,6 @@ class RestApiDocumentationSchemaNestedRelationshipGeneratorTest extends Unit
         $this->schemaGenerator = $documentationGeneratorRestApiTestFactory->createOpenApiSpecificationSchemaGenerator();
     }
 
-    /**
-     * @return void
-     */
     public function testAddResponseResourceSchemaForPluginShouldCreateFirstNestedResourceRelationship(): void
     {
         // Arrange
@@ -98,9 +92,6 @@ class RestApiDocumentationSchemaNestedRelationshipGeneratorTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testAddResponseResourceSchemaForPluginShouldAddRelationshipToFirstNestedResourceRelationshipResponseData(): void
     {
         // Arrange
@@ -116,9 +107,6 @@ class RestApiDocumentationSchemaNestedRelationshipGeneratorTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testAddResponseResourceSchemaForPluginShouldExpandRestTestIncludedWithNestedRelationshipsWithoutAnnotations(): void
     {
         // Arrange
@@ -133,9 +121,6 @@ class RestApiDocumentationSchemaNestedRelationshipGeneratorTest extends Unit
         $this->assertArrayNotHasKey('RestTestThirdNestedResourceRelationshipResponseData', $schemas);
     }
 
-    /**
-     * @return void
-     */
     public function testAddResponseResourceSchemaForPluginShouldExpandRestTestIncludedWithNestedRelationshipsWithDefinedRoute(): void
     {
         // Arrange

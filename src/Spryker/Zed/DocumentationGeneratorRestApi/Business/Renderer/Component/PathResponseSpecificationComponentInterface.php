@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\PathResponseComponentTransfer;
 
 interface PathResponseSpecificationComponentInterface extends SpecificationComponentInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\PathResponseComponentTransfer $pathResponseComponentTransfer
-     *
-     * @return void
-     */
     public function setPathResponseComponentTransfer(PathResponseComponentTransfer $pathResponseComponentTransfer): void;
 }

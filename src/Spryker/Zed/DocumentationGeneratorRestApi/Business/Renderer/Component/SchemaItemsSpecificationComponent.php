@@ -51,19 +51,11 @@ class SchemaItemsSpecificationComponent implements SchemaItemsSpecificationCompo
      */
     protected $schemaItemsComponentTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\SchemaItemsComponentTransfer $schemaItemsComponentTransfer
-     *
-     * @return void
-     */
     public function setSchemaItemsComponentTransfer(SchemaItemsComponentTransfer $schemaItemsComponentTransfer): void
     {
         $this->schemaItemsComponentTransfer = $schemaItemsComponentTransfer;
     }
 
-    /**
-     * @return array
-     */
     public function getSpecificationComponentData(): array
     {
         if (!$this->validateSchemaPropertyComponentTransfer()) {
@@ -73,9 +65,6 @@ class SchemaItemsSpecificationComponent implements SchemaItemsSpecificationCompo
         return $this->addOneOf();
     }
 
-    /**
-     * @return array
-     */
     protected function addOneOf(): array
     {
         $schemaItems = [];
@@ -89,9 +78,6 @@ class SchemaItemsSpecificationComponent implements SchemaItemsSpecificationCompo
         return $schemaItems;
     }
 
-    /**
-     * @return bool
-     */
     protected function validateSchemaPropertyComponentTransfer(): bool
     {
         if (!$this->schemaItemsComponentTransfer) {

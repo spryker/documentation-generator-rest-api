@@ -11,17 +11,9 @@ use Generated\Shared\Transfer\PathMethodDataTransfer;
 
 interface OpenApiTagGeneratorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\PathMethodDataTransfer $pathMethodDataTransfer
-     *
-     * @return void
-     */
     public function addTag(
         PathMethodDataTransfer $pathMethodDataTransfer
     ): void;
 
-    /**
-     * @return array
-     */
     public function getTags(): array;
 }

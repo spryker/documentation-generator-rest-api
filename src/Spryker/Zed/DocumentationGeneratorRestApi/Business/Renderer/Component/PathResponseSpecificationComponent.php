@@ -41,19 +41,11 @@ class PathResponseSpecificationComponent implements PathResponseSpecificationCom
      */
     protected $pathResponseComponentTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\PathResponseComponentTransfer $pathResponseComponentTransfer
-     *
-     * @return void
-     */
     public function setPathResponseComponentTransfer(PathResponseComponentTransfer $pathResponseComponentTransfer): void
     {
         $this->pathResponseComponentTransfer = $pathResponseComponentTransfer;
     }
 
-    /**
-     * @return array
-     */
     public function getSpecificationComponentData(): array
     {
         if (!$this->validatePathResponseComponentTransfer()) {
@@ -69,9 +61,6 @@ class PathResponseSpecificationComponent implements PathResponseSpecificationCom
         return [$this->pathResponseComponentTransfer->getCode() => $result];
     }
 
-    /**
-     * @return bool
-     */
     protected function validatePathResponseComponentTransfer(): bool
     {
         if (!$this->pathResponseComponentTransfer) {

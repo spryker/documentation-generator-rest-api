@@ -11,15 +11,7 @@ use Generated\Shared\Transfer\ParameterTransfer;
 
 interface OpenApiSpecificationParameterGeneratorInterface
 {
-    /**
-     * @return array
-     */
     public function getParameters(): array;
 
-    /**
-     * @param \Generated\Shared\Transfer\ParameterTransfer $parameterTransfer
-     *
-     * @return void
-     */
     public function addParameter(ParameterTransfer $parameterTransfer): void;
 }

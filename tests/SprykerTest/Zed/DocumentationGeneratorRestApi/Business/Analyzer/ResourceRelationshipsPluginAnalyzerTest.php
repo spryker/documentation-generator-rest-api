@@ -36,9 +36,6 @@ class ResourceRelationshipsPluginAnalyzerTest extends Unit
      */
     protected const RELATIONSHIP_RESOURCE = 'test-resource';
 
-    /**
-     * @return void
-     */
     public function testGetResourceRelationshipsWillReturnRelationshipNameForPluginWithRelationships(): void
     {
         $resourceRelationshipsPluginAnalyzer = $this->getResourceRelationshipsPluginAnalyzer();
@@ -52,9 +49,6 @@ class ResourceRelationshipsPluginAnalyzerTest extends Unit
         $this->assertSame(static::RELATIONSHIP_VALUE, $relationship->getRelationshipResourceType());
     }
 
-    /**
-     * @return void
-     */
     public function testGetResourceRelationshipsWillReturnEmptyArrayForPluginWithoutRelationships(): void
     {
         $resourceRelationshipsPluginAnalyzer = $this->getResourceRelationshipsPluginAnalyzer();
@@ -65,9 +59,6 @@ class ResourceRelationshipsPluginAnalyzerTest extends Unit
         $this->assertEmpty($relationships);
     }
 
-    /**
-     * @return \Spryker\Zed\DocumentationGeneratorRestApi\Business\Analyzer\ResourceRelationshipsPluginAnalyzerInterface
-     */
     protected function getResourceRelationshipsPluginAnalyzer(): ResourceRelationshipsPluginAnalyzerInterface
     {
         return (new DocumentationGeneratorRestApiTestFactory(''))->createResourceRelationshipsPluginAnalyzer();
