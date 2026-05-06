@@ -271,6 +271,10 @@ class OpenApiSpecificationSchemaGenerator implements SchemaGeneratorInterface
                 continue;
             }
 
+            if (!is_array($this->schemas[$key])) {
+                continue;
+            }
+
             $oneOfs = array_merge(
                 $this->schemas[$key][SchemaComponentTransfer::ITEMS][SchemaItemsComponentTransfer::ONE_OF],
                 $item[SchemaComponentTransfer::ITEMS][SchemaItemsComponentTransfer::ONE_OF],
