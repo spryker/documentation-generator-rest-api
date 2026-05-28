@@ -8,6 +8,7 @@
 namespace Spryker\Zed\DocumentationGeneratorRestApi\Business;
 
 use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRouteCollectionInterface;
+use Spryker\Shared\Log\LoggerTrait;
 use Spryker\Zed\DocumentationGeneratorRestApi\Business\Analyzer\GlueAnnotationAnalyzer;
 use Spryker\Zed\DocumentationGeneratorRestApi\Business\Analyzer\GlueAnnotationAnalyzerInterface;
 use Spryker\Zed\DocumentationGeneratorRestApi\Business\Analyzer\ResourcePluginAnalyzer;
@@ -22,6 +23,9 @@ use Spryker\Zed\DocumentationGeneratorRestApi\Business\Builder\OpenApiSpecificat
 use Spryker\Zed\DocumentationGeneratorRestApi\Business\Builder\OpenApiSpecificationSchemaComponentBuilder;
 use Spryker\Zed\DocumentationGeneratorRestApi\Business\Builder\SchemaBuilderInterface;
 use Spryker\Zed\DocumentationGeneratorRestApi\Business\Builder\SchemaComponentBuilderInterface;
+use Spryker\Zed\DocumentationGeneratorRestApi\Business\Contributor\ApiPlatformOpenApiContributor;
+use Spryker\Zed\DocumentationGeneratorRestApi\Business\Contributor\OpenApiContributorInterface;
+use Spryker\Zed\DocumentationGeneratorRestApi\Business\Contributor\SymfonyProcessFactory;
 use Spryker\Zed\DocumentationGeneratorRestApi\Business\Finder\GlueControllerFinder;
 use Spryker\Zed\DocumentationGeneratorRestApi\Business\Finder\GlueControllerFinderInterface;
 use Spryker\Zed\DocumentationGeneratorRestApi\Business\Generator\DocumentationGenerator;
@@ -36,6 +40,8 @@ use Spryker\Zed\DocumentationGeneratorRestApi\Business\Generator\OpenApiTagGener
 use Spryker\Zed\DocumentationGeneratorRestApi\Business\Generator\PathGeneratorInterface;
 use Spryker\Zed\DocumentationGeneratorRestApi\Business\Generator\SchemaGeneratorInterface;
 use Spryker\Zed\DocumentationGeneratorRestApi\Business\Generator\SecuritySchemeGeneratorInterface;
+use Spryker\Zed\DocumentationGeneratorRestApi\Business\Merger\OpenApiMerger;
+use Spryker\Zed\DocumentationGeneratorRestApi\Business\Merger\OpenApiMergerInterface;
 use Spryker\Zed\DocumentationGeneratorRestApi\Business\Processor\HttpMethodProcessor;
 use Spryker\Zed\DocumentationGeneratorRestApi\Business\Processor\HttpMethodProcessorInterface;
 use Spryker\Zed\DocumentationGeneratorRestApi\Business\Processor\ResourceRelationshipProcessor;
@@ -87,12 +93,37 @@ use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
  */
 class DocumentationGeneratorRestApiBusinessFactory extends AbstractBusinessFactory
 {
+    use LoggerTrait;
+
     public function createDocumentationGenerator(): DocumentationGeneratorInterface
     {
         return new DocumentationGenerator(
             $this->createResourcePluginAnalyzer(),
             $this->createYamlOpenApiSpecificationWriter(),
+            $this->createApiPlatformOpenApiContributor(),
+            $this->createOpenApiMerger(),
+            $this->getConfig(),
+            $this->getLogger(),
         );
+    }
+
+    public function createOpenApiMerger(): OpenApiMergerInterface
+    {
+        return new OpenApiMerger();
+    }
+
+    public function createApiPlatformOpenApiContributor(): OpenApiContributorInterface
+    {
+        return new ApiPlatformOpenApiContributor(
+            $this->getConfig(),
+            $this->createSymfonyProcessFactory(),
+            $this->getLogger(),
+        );
+    }
+
+    public function createSymfonyProcessFactory(): SymfonyProcessFactory
+    {
+        return new SymfonyProcessFactory();
     }
 
     public function createOpenApiSpecificationSchemaGenerator(): SchemaGeneratorInterface

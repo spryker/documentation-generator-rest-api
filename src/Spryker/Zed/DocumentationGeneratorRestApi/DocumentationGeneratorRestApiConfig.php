@@ -14,24 +14,35 @@ use Spryker\Zed\Kernel\AbstractBundleConfig;
 
 class DocumentationGeneratorRestApiConfig extends AbstractBundleConfig
 {
+    /**
+     * @api
+     */
     public const GENERATED_FILE_OUTPUT_DIRECTORY = APPLICATION_SOURCE_DIR . '/Generated/Glue/Specification/';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const GENERATED_FILE_PREFIX = 'spryker_rest_api';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const REST_API_DOCUMENTATION_INFO_VERSION = '1.0.0';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const REST_API_DOCUMENTATION_INFO_TITLE = 'Spryker API';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const REST_API_DOCUMENTATION_INFO_LICENSE_NAME = 'MIT';
@@ -248,5 +259,70 @@ class DocumentationGeneratorRestApiConfig extends AbstractBundleConfig
     public function isNestedRelationshipsEnabled(): bool
     {
         return false;
+    }
+
+    /**
+     * Specification:
+     * - Returns the absolute path to the Glue console binary used to drive the
+     *   API Platform OpenAPI exporter from the documentation generator.
+     *
+     * @api
+     */
+    public function getGlueConsoleBinPath(): string
+    {
+        return APPLICATION_ROOT_DIR . '/vendor/bin/glue';
+    }
+
+    /**
+     * Specification:
+     * - Returns the Glue console command (with flags) that emits the API Platform
+     *   OpenAPI specification as YAML on stdout.
+     *
+     * @api
+     */
+    public function getApiPlatformExportCommand(): string
+    {
+        return 'api:openapi:export -y --quiet-meta';
+    }
+
+    /**
+     * Specification:
+     * - Maximum time in seconds the API Platform OpenAPI export subprocess may
+     *   run before the contributor aborts and falls back to legacy-only output.
+     *
+     * @api
+     */
+    public function getApiPlatformProcessTimeoutSeconds(): int
+    {
+        return 120;
+    }
+
+    /**
+     * Specification:
+     * - Class name (as a literal string, not `::class`) used to detect whether
+     *   API Platform is installed in the current project. Returning a non-loaded
+     *   class name here makes the contributor a no-op, preserving the legacy spec.
+     *
+     * @api
+     */
+    public function getApiPlatformDetectionClass(): string
+    {
+        return 'ApiPlatform\\Symfony\\Bundle\\ApiPlatformBundle';
+    }
+
+    /**
+     * Specification:
+     * - Returns the absolute path the legacy REST API specification is written to
+     *   and the merger reads from. Mirrors the path constructed by
+     *   `YamlOpenApiDocumentationWriter`.
+     *
+     * @api
+     */
+    public function getFullFileName(): string
+    {
+        return rtrim($this->getGeneratedFileOutputDirectory(), DIRECTORY_SEPARATOR)
+            . DIRECTORY_SEPARATOR
+            . $this->getGeneratedFilePrefix()
+            . '.schema.yml';
     }
 }
