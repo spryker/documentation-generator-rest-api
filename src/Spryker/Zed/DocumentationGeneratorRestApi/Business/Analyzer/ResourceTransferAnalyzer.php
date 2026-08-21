@@ -69,7 +69,6 @@ class ResourceTransferAnalyzer implements ResourceTransferAnalyzerInterface
     {
         $transferReflection = new ReflectionClass($transfer);
         $transferMetadata = $transferReflection->getProperty('transferMetadata');
-        $transferMetadata->setAccessible(true);
 
         return $transferMetadata->getValue($transfer);
     }
