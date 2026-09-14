@@ -18,12 +18,7 @@ class DocumentationGeneratorRestApiToSymfonyYamlAdapter implements Documentation
     public const DUMP_OBJECT_AS_MAP = Yaml::DUMP_OBJECT_AS_MAP;
 
     /**
-     * @param mixed $input
-     * @param int $inline
-     * @param int $indent
-     * @param int $flags
-     *
-     * @return string
+     * {@inheritDoc}
      */
     public function dump($input, int $inline = self::YAML_DEFAULT_INLINE, int $indent = self::YAML_DEFAULT_INDENT, int $flags = self::YAML_DEFAULT_FLAG): string
     {

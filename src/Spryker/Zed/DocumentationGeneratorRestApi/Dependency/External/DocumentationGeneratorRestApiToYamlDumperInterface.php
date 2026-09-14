@@ -26,12 +26,11 @@ interface DocumentationGeneratorRestApiToYamlDumperInterface
 
     /**
      * @param mixed $input
-     * @param int $inline
-     * @param int $indent
-     * @param int $flags
+     * @param int-mask-of<\Symfony\Component\Yaml\Yaml::DUMP_*> $flags
      *
      * @return string
      */
+    // phpcs:ignore Spryker.Commenting.DocBlockParamAllowDefaultValue.Typehint
     public function dump(
         $input,
         int $inline = self::YAML_DEFAULT_INLINE,
