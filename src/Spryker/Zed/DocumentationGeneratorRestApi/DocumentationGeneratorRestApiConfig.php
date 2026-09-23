@@ -277,12 +277,15 @@ class DocumentationGeneratorRestApiConfig extends AbstractBundleConfig
      * Specification:
      * - Returns the Glue console command (with flags) that emits the API Platform
      *   OpenAPI specification as YAML on stdout.
+     * - Requests OpenAPI 3.0.0, the version of the legacy specification the export
+     *   is merged into, so nullable properties arrive as `nullable: true` instead of
+     *   the `[type, null]` lists of OpenAPI 3.1 and later.
      *
      * @api
      */
     public function getApiPlatformExportCommand(): string
     {
-        return 'api:openapi:export -y --quiet-meta';
+        return 'api:openapi:export -y --spec-version=3.0.0 --quiet-meta';
     }
 
     /**
